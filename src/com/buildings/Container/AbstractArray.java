@@ -3,9 +3,6 @@ package com.buildings.Container;
 import java.util.Objects;
 
 public abstract class AbstractArray<T> implements MyCollection<T> {
-    //положительные числа int (2^32)
-    private static final int MAX_SIZE_ARRAY = 2147483639;
-
 
     public abstract MyIterator<T> iterator();
 
