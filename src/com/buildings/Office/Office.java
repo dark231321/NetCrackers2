@@ -1,9 +1,8 @@
-package com.buildings.build;
-
+package com.buildings.Office;
 import org.jetbrains.annotations.NotNull;
 
-public class Flat {
-    static private final Flat DEFAULT_FLAT = new  Flat(2, 50);
+public class Office {
+    static private final Office DEFAULT_OFFICE = new  Office(1, 250);
     private double square;
     private int countRooms;
 
@@ -23,21 +22,21 @@ public class Flat {
         this.countRooms = countRooms;
     }
 
-    static public Flat of(){
-        return DEFAULT_FLAT;
+    static public Office of(){
+        return DEFAULT_OFFICE;
     }
 
     @NotNull
-    static public Flat of(double square) {
-        return new Flat(2, square);
+    static public Office of(double square) {
+        return new Office(1, square);
     }
 
     @NotNull
-    static public Flat of(int countRooms, double square){
-        return new Flat(countRooms, square);
+    static public Office of(int countRooms, double square){
+        return new Office(countRooms, square);
     }
 
-    private Flat(int countRooms, double square){
+    private Office(int countRooms, double square){
         this.square = square;
         this.countRooms = countRooms;
     }

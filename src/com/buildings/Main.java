@@ -7,23 +7,24 @@ import com.buildings.build.Dwelling;
 import com.buildings.build.DwellingFloor;
 import com.buildings.build.Flat;
 
+import java.util.LinkedList;
+
 public class Main {
 
     public static void main(String[] args) {
         MyLinkedList<Integer> list = new MyLinkedList<>();
-        for(int i = 0;i <= 10; i++){
+        for(int i = -200;i <= 0; i++){
             list.add(i);
         }
-        System.out.println(list.size() / 2);
-        list.add(4,100);
-        MyListIterator<Integer> it = list.iterator();
-        while (it.hasNext())
-            System.out.println(it.next());
-        for(int i = 0;i < 100; i++){
-            var tmp = list.find(i);
-            System.out.println(tmp);
+        list.sort((integer, t1) -> t1);
+        for(int i = 0;i < 200; i++){
+            System.out.print(list.get(i));
+            System.out.print(" ");
         }
 
+
+        list.clear();
+        LinkedList<Integer> g;
         boolean a = false;
         boolean b = true;
         MyArrayList<DwellingFloor> myArrayList = new MyArrayList<>();

@@ -1,8 +1,10 @@
 package com.buildings.Container;
+import com.buildings.Container.Alghorithms.ArraysMethods;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Comparator;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -11,25 +13,80 @@ public class MyLinkedList<T> extends AbstractArray<T> {
 
     private MyLinkedList.Node<T> first;
     private MyLinkedList.Node<T> last;
-
     private int size;
 
     public MyLinkedList() { this.size = 0; }
 
+    public void set(int index, T value){
+        var it = new LnkItr(index);
+        it.set(value);
+    }
+
+    private void removeLast(){
+        if(this.size == 1)
+            last = first = null;
+        else{
+            last = last.next;
+            last.prev = null;
+        }
+            this.size--;
+    }
+
+    private void removeFirst(){
+        if(this.size == 1)
+            last = first = null;
+        else{
+            first = first.prev;
+            first.next = null;
+        }
+            this.size--;
+    }
+
+    private void remove(MyLinkedList.Node<T> element){
+        if(element == last)
+            removeLast();
+        else if(element == first)
+                removeFirst();
+             else{
+                 element.prev.next = element.next;
+                 element.next.prev = element.prev;
+                 this.size--;
+            }
+    }
+
+    public T get(int index){
+        var it = new LnkItr(index);
+        return it.get();
+    }
+
+    public boolean remove(int index){
+        var it = new LnkItr(index);
+        remove(it.getNode());
+        return true;
+    }
     @Override
     public MyListIterator<T> iterator() {
         return new LnkItr();
     }
 
+    public MyListIterator<T> iterator(int index){
+        return new LnkItr(index);
+    }
 
-    public boolean add(int index, T e){
+    public void add(int index, T e){
         try {
             LnkItr it = new LnkItr(index);
             addAfter(it.getNode(), e);
         } catch (Exception ex) {
             throw new ConcurrentModificationException();
         }
-        return true;
+    }
+
+    public void clear() {
+        MyListIterator<T> it = new LnkItr(0);
+        while(it.hasNext()){
+            it.remove();
+        }
     }
 
     @Nullable
@@ -105,11 +162,31 @@ public class MyLinkedList<T> extends AbstractArray<T> {
 
     @Override
     public boolean remove(T value) {
-        return false;
+        var tmp = search(value);
+        if(tmp == null)
+            return false;
+        remove(tmp);
+        return true;
     }
 
     @Override
     public int size() { return size; }
+
+    @SuppressWarnings("unchecked")
+    public void sort(Comparator<? super T> pred){
+        var it = new LnkItr();
+        int size = this.size();
+        T[] tmp = (T[]) new Object[this.size()];
+        for(int i = 0; i< size; i++){
+            tmp[i] = it.next();
+        }
+        ArraysMethods.sort(tmp,0, size-1, pred);
+        this.clear();
+        for(int i = 0; i< size; i++){
+            this.add(tmp[i]);
+        }
+    }
+
 
     private static class Node<T> {
         MyLinkedList.Node<T> next;
@@ -138,7 +215,7 @@ public class MyLinkedList<T> extends AbstractArray<T> {
                 if (index == MyLinkedList.this.size() - 1)
                     this.currentElement = MyLinkedList.this.first;
                 else
-                    move(index - 1);
+                    move(index);
         }
 
         private void move(int index){
@@ -150,7 +227,7 @@ public class MyLinkedList<T> extends AbstractArray<T> {
 
         private void moveBack(int index, MyLinkedList.Node<T> position) {
             this.currentElement = position;
-            this.currentIndex = MyLinkedList.this.size;
+            this.currentIndex = MyLinkedList.this.size - 1;
             while(currentIndex != index)
                 this.previous();
 
@@ -207,7 +284,12 @@ public class MyLinkedList<T> extends AbstractArray<T> {
         @Override
         public void remove() {
             try{
-                //toDo remove
+                var tmp = this.currentElement;
+                if(hasNext())
+                    currentElement = currentElement.next;
+                else if(hasPrevious())
+                        this.previous();
+                MyLinkedList.this.remove(tmp);
             }catch (Exception ex) {
                 throw new ConcurrentModificationException();
             }

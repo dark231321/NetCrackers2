@@ -3,7 +3,6 @@ package com.buildings.Container;
 import com.buildings.Container.Alghorithms.ArraysMethods;
 import jdk.internal.vm.annotation.ForceInline;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 
 public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
