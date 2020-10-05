@@ -3,22 +3,24 @@ package com.buildings.Office;
 import com.buildings.Container.MyLinkedList;
 import com.buildings.Container.MyIterator;
 import com.buildings.Container.MyListIterator;
+import com.buildings.Exceptions.FloorIndexOutOfBoundsException;
+import com.buildings.Exceptions.SpaceIndexOutOfBoundsException;
+import com.buildings.property.Building;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class OfficeBuilding {
+public class OfficeBuilding implements Building {
     private MyLinkedList<OfficeFloor> OfficeList;
     private static MyLinkedList<OfficeFloor> Office_LIST;
     private int countRooms = 0;
     private double square = 0.0;
 
-    public OfficeBuilding(MyLinkedList<Integer> countFloor){
-        if(countFloor.size() < 0)
-            throw new IllegalArgumentException();
+    public OfficeBuilding(@NotNull MyLinkedList<Integer> countFloor){
+        if(countFloor.size() == 0)
+            throw new SpaceIndexOutOfBoundsException();
         OfficeList = new MyLinkedList<>();
         for(int i =0; i < countFloor.size(); i++){
             OfficeList.set(i, new OfficeFloor(countFloor.get(i)));
@@ -28,7 +30,7 @@ public class OfficeBuilding {
 
     private OfficeBuilding() {
         if(Office_LIST == null)
-            throw new IllegalArgumentException();
+            throw new SpaceIndexOutOfBoundsException();
         this.OfficeList = Office_LIST;
         Office_LIST = null;
         getCalculation();
@@ -57,32 +59,31 @@ public class OfficeBuilding {
             if(tmp >= this.OfficeList.get(i).size())
                 tmp -= this.OfficeList.get(i).size();
             else
-                return this.OfficeList.get(i).OfficeMyListIterator(tmp);
+                return this.OfficeList.get(i).MyListIterator(tmp);
         }
         return null;
     }
 
-    public Office getOffice(int numberOffice){
+    public Office getSpace(int numberOffice){
         var it = findOffice(numberOffice);
         if (it == null)
-            throw new IllegalArgumentException();
+            throw new FloorIndexOutOfBoundsException();
         return it.get();
     }
 
-    public boolean removeOffice(int numberOffice){
+    public void removeSpace(int numberOffice){
         var it = findOffice(numberOffice);
         if (it == null)
-            throw new IllegalArgumentException();
+            throw new FloorIndexOutOfBoundsException();
         countRooms-=it.get().getCountRooms();
         square-=it.get().getSquare();
         it.remove();
-        return true;
     }
 
     public boolean setOffice(int numberOffice, Office Office){
         var it = findOffice(numberOffice);
         if(it == null)
-            throw new IllegalArgumentException();
+            throw new FloorIndexOutOfBoundsException();
         countRooms += Office.getCountRooms() - it.get().getCountRooms();
         square += Office.getSquare() - it.get().getSquare();
         it.set(Office);
@@ -90,12 +91,18 @@ public class OfficeBuilding {
     }
 
     public OfficeFloor set(int index, OfficeFloor OfficeFloor){
+        if(index<0 || index>this.OfficeList.size())
+            throw new FloorIndexOutOfBoundsException();
         OfficeList.set(index, OfficeFloor);
         getCalculation();
         return OfficeList.get(index);
     }
 
-    public OfficeFloor get(int index){ return OfficeList.get(index);}
+    public OfficeFloor get(int index){
+        if(index<0 || index>this.OfficeList.size())
+            throw new FloorIndexOutOfBoundsException();
+        return OfficeList.get(index);
+    }
 
     public MyLinkedList<OfficeFloor> getOfficeList() { return OfficeList; }
 
@@ -103,9 +110,9 @@ public class OfficeBuilding {
 
     public int getCountRooms(){ return countRooms; }
 
-    public int getCountOffices(){
+    public int getCountSpace(){
         if(this.OfficeList == null)
-            throw new NoSuchElementException();
+            throw new FloorIndexOutOfBoundsException();
         int tmp = 0;
         for(int i = 0;i < this.OfficeList.size(); i++) {
             tmp += this.OfficeList.get(i).size();
@@ -115,7 +122,7 @@ public class OfficeBuilding {
 
     public double getBestSpace() {
         if(this.OfficeList == null)
-            throw new NoSuchElementException();
+            throw new FloorIndexOutOfBoundsException();
         double tmp = this.OfficeList.get(0).getBestSpace();
         for(int i = 0; i < OfficeList.size(); i++){
             if(tmp < OfficeList.get(i).getBestSpace())
@@ -127,10 +134,10 @@ public class OfficeBuilding {
     public double getSquare() { return square; }
 
     public MyLinkedList<Office> sortedOffice(){
-        int countOffices = this.getCountOffices();
+        int countOffices = this.getCountSpace();
         MyLinkedList<Office> tmp = new MyLinkedList<>();
         for(int i = 0; i < countOffices; i++) {
-            var it = this.getOffice(i);
+            var it = this.getSpace(i);
             tmp.add(it);
         }
         Comparator<Office> comparator = Comparator.comparing(Office::getSquare);

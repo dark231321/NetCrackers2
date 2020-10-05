@@ -2,20 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6353e02e-178e-4792-98e6-67e8c85cdafd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/buildings/Office/Office.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/buildings/Office/OfficeBuilding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/buildings/Office/OfficeFloor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/Exceptions/FloorIndexOutOfBoundsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/Exceptions/InvalidRoomsCountException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/Exceptions/InvalidSpaceAreaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/Exceptions/SpaceIndexOutOfBoundsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/Test/BuildTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/Test/OfficeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/property/Building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/property/Floor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/property/Space.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/AbstractArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/AbstractArray.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/Alghorithms/ArraysMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/Alghorithms/ArraysMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$Itr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$Itr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$ListItr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$ListItr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/Dwelling.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/Dwelling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/DwellingFloor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/DwellingFloor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/Flat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/Flat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Office/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Office/Office.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Office/OfficeBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Office/OfficeBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Office/OfficeFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Office/OfficeFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/build/Dwelling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/build/Dwelling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/build/DwellingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/build/DwellingFloor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/build/Flat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/build/Flat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,14 +49,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="dark231321 &lt;teterin1122@gmail.com&gt;" />
         <option value="а" />
         <option value="Author" />
       </list>
@@ -72,10 +79,22 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="public" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/buildings/property" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.buildings.Office" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.buildings.property" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Danil1\IdeaProjects\net_crackers2\src\com\buildings\property" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main (1)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -130,7 +149,8 @@
       <workItem from="1601415058385" duration="514000" />
       <workItem from="1601747729551" duration="3496000" />
       <workItem from="1601815204266" duration="23320000" />
-      <workItem from="1601878597119" duration="3391000" />
+      <workItem from="1601878597119" duration="14391000" />
+      <workItem from="1601905542634" duration="740000" />
     </task>
     <task id="LOCAL-00001" summary="msg">
       <created>1601829959398</created>
@@ -139,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601829959398</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="msg">
+      <created>1601889535447</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601889535447</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,70 +189,78 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601279309042" />
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1601820805372">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1601897229442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1601820805372" />
-    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1601280813804">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1601897229442" />
+    <state x="207" y="195" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1601895467876">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1601280813804" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1601889507338">
+    <state x="207" y="195" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1601895467876" />
+    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1601894038247">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1601889507338" />
+    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1601894038247" />
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1601889533816">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1601889533816" />
     <state width="409" height="466" key="DebuggerActiveHint" timestamp="1601360853337">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="409" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1601360853337" />
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1601839597031">
+    <state width="1493" height="442" key="GridCell.Tab.0.bottom" timestamp="1601906290897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601839597031" />
-    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1601839597030">
+    <state width="1493" height="442" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601906290897" />
+    <state width="1493" height="442" key="GridCell.Tab.0.center" timestamp="1601906290896">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601839597030" />
-    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1601839597030">
+    <state width="1493" height="442" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601906290896" />
+    <state width="1493" height="442" key="GridCell.Tab.0.left" timestamp="1601906290896">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601839597030" />
-    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1601839597031">
+    <state width="1493" height="442" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601906290896" />
+    <state width="1493" height="442" key="GridCell.Tab.0.right" timestamp="1601906290897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601839597031" />
-    <state width="1493" height="202" key="GridCell.Tab.1.bottom" timestamp="1601839597028">
+    <state width="1493" height="442" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601906290897" />
+    <state width="1493" height="442" key="GridCell.Tab.1.bottom" timestamp="1601905356427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601839597028" />
-    <state width="1493" height="202" key="GridCell.Tab.1.center" timestamp="1601839597028">
+    <state width="1493" height="442" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601905356427" />
+    <state width="1493" height="442" key="GridCell.Tab.1.center" timestamp="1601905356427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1601839597028" />
-    <state width="1493" height="202" key="GridCell.Tab.1.left" timestamp="1601839597028">
+    <state width="1493" height="442" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1601905356427" />
+    <state width="1493" height="442" key="GridCell.Tab.1.left" timestamp="1601905356427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1601839597028" />
-    <state width="1493" height="202" key="GridCell.Tab.1.right" timestamp="1601839597028">
+    <state width="1493" height="442" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1601905356427" />
+    <state width="1493" height="442" key="GridCell.Tab.1.right" timestamp="1601905356427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1601839597028" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1601830047173">
+    <state width="1493" height="442" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1601905356427" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1601889565807">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601830047173" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1601882789858">
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601889565807" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1601905570633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1601882789858" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1601905570633" />
     <state x="498" y="306" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1601278990242">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="306" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824@0.0.1536.824" timestamp="1601278990242" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601889512335">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601889556945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1601889512335" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1601889556945" />
+    <state x="499" y="178" key="extract.method.dialog" timestamp="1601897196894">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="178" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1601897196894" />
     <state x="209" y="33" key="new project wizard" timestamp="1601280645551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -234,25 +269,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1601250140396" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1601277109561">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1601889568527">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1601277109561" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1601889568527" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601248599835">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601248599835" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/buildings/Main.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/net_crackers2$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1601360009422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

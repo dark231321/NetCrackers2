@@ -3,6 +3,9 @@ package com.buildings.build;
 import com.buildings.Container.MyArrayList;
 import com.buildings.Container.MyIterator;
 import com.buildings.Container.MyListIterator;
+import com.buildings.Exceptions.FloorIndexOutOfBoundsException;
+import com.buildings.Exceptions.SpaceIndexOutOfBoundsException;
+import com.buildings.property.Building;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -10,13 +13,13 @@ import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class Dwelling {
+public class Dwelling implements Building {
     private MyArrayList<DwellingFloor> flatList;
     private static MyArrayList<DwellingFloor> FLAT_LIST;
     private int countRooms = 0;
     private double square = 0.0;
 
-    public Dwelling(MyArrayList<Integer> countFloor){
+    public Dwelling(@NotNull MyArrayList<Integer> countFloor){
         if(countFloor.size() < 0)
             throw new IllegalArgumentException();
         flatList = new MyArrayList<>(countFloor.size());
@@ -57,45 +60,49 @@ public class Dwelling {
             if(tmp >= this.flatList.get(i).size())
                 tmp -= this.flatList.get(i).size();
             else
-                return this.flatList.get(i).flatMyListIterator(tmp);
+                return this.flatList.get(i).MyListIterator(tmp);
         }
         return null;
     }
 
-    public Flat getFlat(int numberFlat){
+    public Flat getSpace(int numberFlat){
         var it = findFlat(numberFlat);
         if (it == null)
-            throw new IllegalArgumentException();
+            throw new SpaceIndexOutOfBoundsException();
         return it.get();
     }
 
-    public boolean removeFlat(int numberFlat){
+    public void removeSpace(int numberFlat){
         var it = findFlat(numberFlat);
         if (it == null)
-            throw new IllegalArgumentException();
+            throw new SpaceIndexOutOfBoundsException();
         countRooms-=it.get().getCountRooms();
         square-=it.get().getSquare();
         it.remove();
-        return true;
     }
 
-    public boolean setFlat(int numberFlat, Flat flat){
+    public void setFlat(int numberFlat, @NotNull Flat flat){
         var it = findFlat(numberFlat);
         if(it == null)
-            throw new IllegalArgumentException();
+            throw new SpaceIndexOutOfBoundsException();
         countRooms += flat.getCountRooms() - it.get().getCountRooms();
         square += flat.getSquare() - it.get().getSquare();
         it.set(flat);
-        return true;
     }
 
-    public DwellingFloor set(int index, DwellingFloor dwellingFloor){
+    public DwellingFloor set(int index,@NotNull DwellingFloor dwellingFloor){
+        if(index < 0 || index >= flatList.size())
+            throw new FloorIndexOutOfBoundsException();
         flatList.set(index, dwellingFloor);
         getCalculation();
         return flatList.get(index);
     }
 
-    public DwellingFloor get(int index){ return flatList.get(index);}
+    public DwellingFloor get(int index){
+        if(index < 0 || index >= flatList.size())
+            throw new FloorIndexOutOfBoundsException();
+        return flatList.get(index);
+    }
 
     public MyArrayList<DwellingFloor> getFlatList() { return flatList; }
 
@@ -103,9 +110,9 @@ public class Dwelling {
 
     public int getCountRooms(){ return countRooms; }
 
-    public int getCountFlats(){
+    public int getCountSpace(){
         if(this.flatList == null)
-            throw new NoSuchElementException();
+            throw new FloorIndexOutOfBoundsException();
         int tmp = 0;
         for(int i = 0;i < this.flatList.size(); i++) {
             tmp += this.flatList.get(i).size();
@@ -115,7 +122,7 @@ public class Dwelling {
 
     public double getBestSpace() {
         if(this.flatList == null)
-            throw new NoSuchElementException();
+            throw new FloorIndexOutOfBoundsException();
         double tmp = this.flatList.get(0).getBestSpace();
         for(int i = 0; i < flatList.size(); i++){
             if(tmp < flatList.get(i).getBestSpace())
@@ -127,10 +134,10 @@ public class Dwelling {
     public double getSquare() { return square; }
 
     public MyArrayList<Flat> sortedFlat(){
-        int countFlats = this.getCountFlats();
+        int countFlats = this.getCountSpace();
         MyArrayList<Flat> tmp = new MyArrayList<>(countFlats);
         for(int i = 0; i < countFlats; i++) {
-            var it = this.getFlat(i);
+            var it = this.getSpace(i);
             tmp.add(it);
         }
         Comparator<Flat> comparator = Comparator.comparing(Flat::getSquare);

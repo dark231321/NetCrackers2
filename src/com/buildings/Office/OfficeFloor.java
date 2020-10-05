@@ -1,11 +1,16 @@
 package com.buildings.Office;
 
+import com.buildings.Container.MyArrayList;
 import com.buildings.Container.MyLinkedList;
 import com.buildings.Container.MyIterator;
 import com.buildings.Container.MyListIterator;
+import com.buildings.Exceptions.FloorIndexOutOfBoundsException;
+import com.buildings.Exceptions.InvalidRoomsCountException;
+import com.buildings.Exceptions.InvalidSpaceAreaException;
+import com.buildings.property.Floor;
 import org.jetbrains.annotations.NotNull;
 
-public class OfficeFloor {
+public class OfficeFloor implements Floor {
     private MyLinkedList<Office> OfficeList;
 
     private int countRooms = 0;
@@ -13,7 +18,7 @@ public class OfficeFloor {
 
     public OfficeFloor(int size) {
         if(size < 0)
-            throw new IllegalArgumentException();
+            throw new FloorIndexOutOfBoundsException();
 
         this.OfficeList = new MyLinkedList<>();
         for(int i = 0; i < size; i++)
@@ -21,7 +26,7 @@ public class OfficeFloor {
         getCalculation();
     }
 
-    public MyListIterator<Office> OfficeMyListIterator(int index){
+    public MyListIterator<Office> MyListIterator(int index){
         return OfficeList.iterator(index);
     }
 
@@ -45,21 +50,25 @@ public class OfficeFloor {
 
     public int getCountRooms() {
         if(countRooms < 0)
-            throw new IllegalArgumentException();
+            throw new InvalidRoomsCountException();
         return countRooms;
     }
 
     public double getSquare(){
-        if(countRooms < 0)
-            throw new IllegalArgumentException();
+        if(square < 0)
+            throw new InvalidSpaceAreaException();
         return square;
     }
 
     public Office get(int index) {
+        if(index < 0 || index >= this.OfficeList.size())
+            throw new FloorIndexOutOfBoundsException();
         return OfficeList.get(index);
     }
 
     public Office set(int index, @NotNull Office Office){
+        if(index < 0 || index >= this.OfficeList.size())
+            throw new FloorIndexOutOfBoundsException();
         Office tmp = OfficeList.iterator(index).next();
         this.countRooms += Office.getCountRooms()  - tmp.getCountRooms();
         this.square += Office.getSquare() - tmp.getSquare();
@@ -68,6 +77,8 @@ public class OfficeFloor {
     }
 
     public Office setRooms(int index, int newCountRooms) {
+        if(index < 0 || index >= this.OfficeList.size())
+            throw new FloorIndexOutOfBoundsException();
         MyListIterator<Office> it = OfficeList.iterator(index);
         it.next().setCountRooms(newCountRooms);
         return OfficeList.get(index);
@@ -78,6 +89,8 @@ public class OfficeFloor {
     }
 
     public boolean Remove(int index){
+        if(index < 0 || index >= this.OfficeList.size())
+            throw new FloorIndexOutOfBoundsException();
         Office tmp = OfficeList.iterator(index).get();
         this.square -= tmp.getSquare();
         this.countRooms -= tmp.getCountRooms();
