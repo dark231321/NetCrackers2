@@ -80,7 +80,6 @@ public class OfficeTest {
         printDate();
         officeBuilding.set(0, new OfficeFloor(3));
         printDate();
-
         var res = officeBuilding.sortedOffice();
         for(int i=0;i < res.size(); i++) {
             System.out.print(res.get(i).getSquare() + " ");
