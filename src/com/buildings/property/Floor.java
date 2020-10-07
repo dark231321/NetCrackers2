@@ -1,6 +1,6 @@
 package com.buildings.property;
 
-import com.buildings.Container.MyLinkedList;
+import com.buildings.Container.AbstractArray;
 import com.buildings.Container.MyListIterator;
 
 
@@ -8,6 +8,10 @@ public interface Floor {
     MyListIterator<? extends Space> MyListIterator(int index);
 
     int size();
+
+    AbstractArray<? extends Space> getSpaceList();
+
+    Space set(int index, Space space);
 
     double getSquare();
 

@@ -1,6 +1,5 @@
 package com.buildings.Office;
 
-import com.buildings.Container.MyArrayList;
 import com.buildings.Container.MyLinkedList;
 import com.buildings.Container.MyIterator;
 import com.buildings.Container.MyListIterator;
@@ -8,6 +7,7 @@ import com.buildings.Exceptions.FloorIndexOutOfBoundsException;
 import com.buildings.Exceptions.InvalidRoomsCountException;
 import com.buildings.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Floor;
+import com.buildings.property.Space;
 import org.jetbrains.annotations.NotNull;
 
 public class OfficeFloor implements Floor {
@@ -66,14 +66,14 @@ public class OfficeFloor implements Floor {
         return OfficeList.get(index);
     }
 
-    public Office set(int index, @NotNull Office Office){
+    public Office set(int index, @NotNull Space Office){
         if(index < 0 || index >= this.OfficeList.size())
             throw new FloorIndexOutOfBoundsException();
         Office tmp = OfficeList.iterator(index).next();
         this.countRooms += Office.getCountRooms()  - tmp.getCountRooms();
         this.square += Office.getSquare() - tmp.getSquare();
-        OfficeList.set(index, Office);
-        return Office;
+        OfficeList.set(index,(Office) Office);
+        return (Office) Office;
     }
 
     public Office setRooms(int index, int newCountRooms) {
@@ -84,7 +84,7 @@ public class OfficeFloor implements Floor {
         return OfficeList.get(index);
     }
 
-    public MyLinkedList<Office> getOfficeList() {
+    public MyLinkedList<Office> getSpaceList() {
         return OfficeList;
     }
 

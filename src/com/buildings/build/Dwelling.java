@@ -6,11 +6,12 @@ import com.buildings.Container.MyListIterator;
 import com.buildings.Exceptions.FloorIndexOutOfBoundsException;
 import com.buildings.Exceptions.SpaceIndexOutOfBoundsException;
 import com.buildings.property.Building;
+import com.buildings.property.Floor;
+import com.buildings.property.Space;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class Dwelling implements Building {
@@ -81,20 +82,37 @@ public class Dwelling implements Building {
         it.remove();
     }
 
-    public void setFlat(int numberFlat, @NotNull Flat flat){
+    public void setSpace(int numberFlat, @NotNull Space flat){
         var it = findFlat(numberFlat);
         if(it == null)
             throw new SpaceIndexOutOfBoundsException();
         countRooms += flat.getCountRooms() - it.get().getCountRooms();
         square += flat.getSquare() - it.get().getSquare();
-        it.set(flat);
+        it.set((Flat) flat);
     }
 
-    public DwellingFloor set(int index,@NotNull DwellingFloor dwellingFloor){
+    private void RecalculateFloorDecr(@NotNull MyListIterator<? extends Space> iterator){
+        while (iterator.hasNext()){
+            Space oldSpace = iterator.next();
+            this.square -= oldSpace.getSquare();
+            this.countRooms -= oldSpace.getCountRooms();
+        }
+    }
+
+    private void RecalculateFloorIncr(@NotNull MyListIterator<? extends Space> iterator){
+        while (iterator.hasNext()){
+            Space oldSpace = iterator.next();
+            this.square += oldSpace.getSquare();
+            this.countRooms += oldSpace.getCountRooms();
+        }
+    }
+
+    public DwellingFloor set(int index,@NotNull Floor dwellingFloor){
         if(index < 0 || index >= flatList.size())
             throw new FloorIndexOutOfBoundsException();
-        flatList.set(index, dwellingFloor);
-        getCalculation();
+        RecalculateFloorDecr(flatList.get(index).MyListIterator(0));
+        flatList.set(index,(DwellingFloor) dwellingFloor);
+        RecalculateFloorIncr(flatList.get(index).MyListIterator(0));
         return flatList.get(index);
     }
 
@@ -104,7 +122,7 @@ public class Dwelling implements Building {
         return flatList.get(index);
     }
 
-    public MyArrayList<DwellingFloor> getFlatList() { return flatList; }
+    public MyArrayList<DwellingFloor> getSpaceList() { return flatList; }
 
     public int size() { return flatList.size(); }
 
@@ -135,7 +153,7 @@ public class Dwelling implements Building {
 
     public MyArrayList<Flat> sortedFlat(){
         int countFlats = this.getCountSpace();
-        MyArrayList<Flat> tmp = new MyArrayList<>(countFlats);
+        MyArrayList<Flat> tmp = new MyArrayList<>();
         for(int i = 0; i < countFlats; i++) {
             var it = this.getSpace(i);
             tmp.add(it);

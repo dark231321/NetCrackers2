@@ -69,14 +69,14 @@ public class DwellingFloor implements Floor {
         return flatList.get(index);
     }
 
-    public Flat set(int index, @NotNull Flat flat){
+    public Flat set(int index, @NotNull Space flat){
         if(index < 0 || index >= this.flatList.size())
             throw new SpaceIndexOutOfBoundsException();
         Flat tmp = flatList.iterator(index).next();
         this.countRooms += flat.getCountRooms()  - tmp.getCountRooms();
         this.square += flat.getSquare() - tmp.getSquare();
-        flatList.set(index, flat);
-        return flat;
+        flatList.set(index,(Flat) flat);
+        return (Flat) flat;
     }
 
     public Flat setRooms(int index, int newCountRooms) {

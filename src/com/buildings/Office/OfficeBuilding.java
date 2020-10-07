@@ -5,7 +5,10 @@ import com.buildings.Container.MyIterator;
 import com.buildings.Container.MyListIterator;
 import com.buildings.Exceptions.FloorIndexOutOfBoundsException;
 import com.buildings.Exceptions.SpaceIndexOutOfBoundsException;
+import com.buildings.build.DwellingFloor;
 import com.buildings.property.Building;
+import com.buildings.property.Floor;
+import com.buildings.property.Space;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -80,21 +83,37 @@ public class OfficeBuilding implements Building {
         it.remove();
     }
 
-    public boolean setOffice(int numberOffice, Office Office){
+    public void setSpace(int numberOffice, Space Office){
         var it = findOffice(numberOffice);
         if(it == null)
             throw new FloorIndexOutOfBoundsException();
         countRooms += Office.getCountRooms() - it.get().getCountRooms();
         square += Office.getSquare() - it.get().getSquare();
-        it.set(Office);
-        return true;
+        it.set((Office) Office);
     }
 
-    public OfficeFloor set(int index, OfficeFloor OfficeFloor){
+    private void RecalculateFloorDecr(@NotNull MyListIterator<? extends Space> iterator){
+        while (iterator.hasNext()){
+            Space oldSpace = iterator.next();
+            this.square -= oldSpace.getSquare();
+            this.countRooms -= oldSpace.getCountRooms();
+        }
+    }
+
+    private void RecalculateFloorIncr(@NotNull MyListIterator<? extends Space> iterator){
+        while (iterator.hasNext()){
+            Space oldSpace = iterator.next();
+            this.square += oldSpace.getSquare();
+            this.countRooms += oldSpace.getCountRooms();
+        }
+    }
+
+    public OfficeFloor set(int index, Floor OfficeFloor){
         if(index<0 || index>this.OfficeList.size())
             throw new FloorIndexOutOfBoundsException();
-        OfficeList.set(index, OfficeFloor);
-        getCalculation();
+        RecalculateFloorDecr(OfficeList.get(index).MyListIterator(0));
+        OfficeList.set(index,(OfficeFloor) OfficeFloor);
+        RecalculateFloorIncr(OfficeList.get(index).MyListIterator(0));
         return OfficeList.get(index);
     }
 
@@ -104,7 +123,7 @@ public class OfficeBuilding implements Building {
         return OfficeList.get(index);
     }
 
-    public MyLinkedList<OfficeFloor> getOfficeList() { return OfficeList; }
+    public MyLinkedList<OfficeFloor> getSpaceList() { return OfficeList; }
 
     public int size() { return OfficeList.size(); }
 

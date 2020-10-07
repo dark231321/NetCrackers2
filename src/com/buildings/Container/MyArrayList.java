@@ -3,7 +3,11 @@ package com.buildings.Container;
 import com.buildings.Container.Alghorithms.ArraysMethods;
 import jdk.internal.vm.annotation.ForceInline;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+import java.util.Objects;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Comparator;
+import java.util.RandomAccess;
 
 public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
 
@@ -158,19 +162,11 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
         }
 
         public void set(T value) {
-            try {
-                MyArrayList.this.set(this.current, value);
-            } catch (IndexOutOfBoundsException ex) {
-                throw new ConcurrentModificationException();
-            }
+            MyArrayList.this.set(this.current, value);
         }
 
         public void add(T value) {
-            try {
-                MyArrayList.this.add(value);
-            } catch (IndexOutOfBoundsException ex) {
-                throw new ConcurrentModificationException();
-            }
+            MyArrayList.this.add(value);
         }
     }
 
