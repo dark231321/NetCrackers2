@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
-import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -74,12 +73,8 @@ public class MyLinkedList<T> extends AbstractArray<T> {
     }
 
     public void add(int index, T e){
-        try {
-            LnkItr it = new LnkItr(index);
-            addAfter(it.getNode(), e);
-        } catch (Exception ex) {
-            throw new ConcurrentModificationException();
-        }
+        LnkItr it = new LnkItr(index);
+        addAfter(it.getNode(), e);
     }
 
     public void clear() {
@@ -283,16 +278,12 @@ public class MyLinkedList<T> extends AbstractArray<T> {
 
         @Override
         public void remove() {
-            try{
-                var tmp = this.currentElement;
-                if(hasNext())
-                    currentElement = currentElement.next;
-                else if(hasPrevious())
-                        this.previous();
-                MyLinkedList.this.remove(tmp);
-            }catch (Exception ex) {
-                throw new ConcurrentModificationException();
-            }
+            var tmp = this.currentElement;
+            if(hasNext())
+                currentElement = currentElement.next;
+            else if(hasPrevious())
+                this.previous();
+            MyLinkedList.this.remove(tmp);
         }
 
         @Override
@@ -302,11 +293,7 @@ public class MyLinkedList<T> extends AbstractArray<T> {
 
         @Override
         public void add(T t) {
-            try {
-                MyLinkedList.this.addAfter(currentElement, t);
-            } catch (Exception ex) {
-                throw new ConcurrentModificationException();
-            }
+            MyLinkedList.this.addAfter(currentElement, t);
         }
     }
 }
