@@ -1,10 +1,11 @@
 package com.buildings.Test;
 
 import com.buildings.Container.MyLinkedList;
-import com.buildings.Office.Office;
-import com.buildings.Office.OfficeBuilding;
-import com.buildings.Office.OfficeFloor;
-import com.buildings.build.DwellingFloor;
+import com.buildings.property.Office.Office;
+import com.buildings.property.Office.OfficeBuilding;
+import com.buildings.property.Office.OfficeFloor;
+import com.buildings.property.build.DwellingFloor;
+import com.buildings.property.Floor;
 import com.buildings.property.Space;
 
 import java.util.Arrays;
@@ -16,20 +17,20 @@ public class OfficeTest {
     }
 
     static public void start(){
-        MyLinkedList<OfficeFloor> myArrayList = new MyLinkedList<>();
+        MyLinkedList<Floor> myArrayList = new MyLinkedList<>();
         start(myArrayList);
         officeBuilding = OfficeBuilding.ofOfficeBuilding(myArrayList);
         print();
     }
 
-    static private void start(MyLinkedList<OfficeFloor> myArrayList) {
+    static private void start(MyLinkedList<Floor> myArrayList) {
         for(int j=0; j < 2; j++) {
-            MyLinkedList<Office> flatList = new MyLinkedList<>();
+            MyLinkedList<Space> flatList = new MyLinkedList<>();
             for (int i = 0; i < 4; i++) {
                 if(i == 0)
-                    flatList.add(Office.of());
+                    flatList.add(new Office());
                 else
-                    flatList.add(Office.of(i, i * 10));
+                    flatList.add(new Office(i,i*10));
             }
             myArrayList.add(new OfficeFloor(flatList));
         }
@@ -58,13 +59,13 @@ public class OfficeTest {
         try { officeBuilding.set(10, new OfficeFloor(3)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
-        try { officeBuilding.setSpace(10, Office.of(300)); }
+        try { officeBuilding.setSpace(10, new Office(300)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
-        try { officeBuilding.setSpace(0, Office.of(-300)); }
+        try { officeBuilding.setSpace(0, new Office(-300)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
-        try { officeBuilding.setSpace(0, Office.of(-300)); }
+        try { officeBuilding.setSpace(0, new Office(-300)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
         try {  officeBuilding.set(-10, new DwellingFloor(3)); }
@@ -73,14 +74,16 @@ public class OfficeTest {
 
     static private void print(){
         printDate();
+        var s = officeBuilding.toString();
+        System.out.println(s);
         System.out.println("Before changes");
-        officeBuilding.setSpace(1, Office.of(300));
+        officeBuilding.setSpace(1, new Office(300));
         printDate();
         officeBuilding.removeSpace(1);
         printDate();
         officeBuilding.set(0, new OfficeFloor(3));
         printDate();
-        var res = officeBuilding.sortedOffice();
+        var res = officeBuilding.sortedSpace();
         for(int i=0;i < res.size(); i++) {
             System.out.print(res.get(i).getSquare() + " ");
         }

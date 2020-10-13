@@ -1,9 +1,10 @@
 package com.buildings.Test;
 
 import com.buildings.Container.MyArrayList;
-import com.buildings.build.Dwelling;
-import com.buildings.build.DwellingFloor;
-import com.buildings.build.Flat;
+import com.buildings.property.build.Dwelling;
+import com.buildings.property.build.DwellingFloor;
+import com.buildings.property.build.Flat;
+import com.buildings.property.Floor;
 import com.buildings.property.Space;
 
 import java.util.Arrays;
@@ -15,20 +16,20 @@ public class BuildTest {
     }
 
     static public void start(){
-        MyArrayList<DwellingFloor> myArrayList = new MyArrayList<>();
+        MyArrayList<Floor> myArrayList = new MyArrayList<>();
         start(myArrayList);
         dwelling = Dwelling.ofDwelling(myArrayList);
         print();
     }
 
-    static private void start(MyArrayList<DwellingFloor> myArrayList) {
+    static private void start(MyArrayList<Floor> myArrayList) {
         for(int j=0; j<2; j++) {
-            MyArrayList<Flat> flatList = new MyArrayList<>();
+            MyArrayList<Space> flatList = new MyArrayList<>();
             for (int i = 0; i < 4; i++) {
                 if(i == 0)
-                    flatList.add(Flat.of());
+                    flatList.add(new Flat());
                 else
-                    flatList.add(Flat.of(i, i * 10));
+                    flatList.add(new Flat(i, i*10));
             }
             myArrayList.set(j, new DwellingFloor(flatList));
         }
@@ -56,13 +57,13 @@ public class BuildTest {
         try { dwelling.set(10, new DwellingFloor(3)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
-        try { dwelling.setSpace(10, Flat.of(300)); }
+        try { dwelling.setSpace(10, new Flat(300)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
-        try { dwelling.setSpace(0, Flat.of(-300)); }
+        try { dwelling.setSpace(0,new Flat(-300)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
-        try { dwelling.setSpace(0, Flat.of(-300)); }
+        try { dwelling.setSpace(0, new Flat(-300)); }
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
 
         try {  dwelling.set(-10, new DwellingFloor(3)); }
@@ -71,14 +72,16 @@ public class BuildTest {
 
     static private void print(){
         printDate();
+        var s = dwelling.toString();
+        System.out.println(s);
         System.out.println("Before changes");
-        dwelling.setSpace(1, Flat.of(300));
+        dwelling.setSpace(1, new Flat(300));
         printDate();
         dwelling.removeSpace(1);
         printDate();
         dwelling.set(0, new DwellingFloor(3));
         printDate();
-        var res = dwelling.sortedFlat();
+        var res = dwelling.sortedSpace();
         for(int i=0;i < res.size(); i++) {
             System.out.print(res.get(i).getSquare() + " ");
         }

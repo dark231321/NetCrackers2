@@ -10,5 +10,4 @@ public interface Space {
 
     void setCountRooms(int countRooms);
 
-
 }

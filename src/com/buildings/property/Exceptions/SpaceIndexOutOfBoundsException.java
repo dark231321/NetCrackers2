@@ -1,4 +1,4 @@
-package com.buildings.Exceptions;
+package com.buildings.property.Exceptions;
 
 public class SpaceIndexOutOfBoundsException extends IndexOutOfBoundsException {
     public SpaceIndexOutOfBoundsException() {

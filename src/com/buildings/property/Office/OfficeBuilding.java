@@ -1,11 +1,10 @@
-package com.buildings.Office;
+package com.buildings.property.Office;
 
 import com.buildings.Container.MyLinkedList;
 import com.buildings.Container.MyIterator;
 import com.buildings.Container.MyListIterator;
-import com.buildings.Exceptions.FloorIndexOutOfBoundsException;
-import com.buildings.Exceptions.SpaceIndexOutOfBoundsException;
-import com.buildings.build.DwellingFloor;
+import com.buildings.property.Exceptions.FloorIndexOutOfBoundsException;
+import com.buildings.property.Exceptions.SpaceIndexOutOfBoundsException;
 import com.buildings.property.Building;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
@@ -16,8 +15,8 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class OfficeBuilding implements Building {
-    private MyLinkedList<OfficeFloor> OfficeList;
-    private static MyLinkedList<OfficeFloor> Office_LIST;
+    private MyLinkedList<Floor> OfficeList;
+    private static MyLinkedList<Floor> Office_LIST;
     private int countRooms = 0;
     private double square = 0.0;
 
@@ -40,23 +39,23 @@ public class OfficeBuilding implements Building {
     }
 
     @NotNull
-    public static OfficeBuilding ofOfficeBuilding(MyLinkedList<OfficeFloor> OfficeList) {
+    public static OfficeBuilding ofOfficeBuilding(MyLinkedList<Floor> OfficeList) {
         Objects.requireNonNull(OfficeList);
         Office_LIST = OfficeList;
         return new OfficeBuilding();
     }
 
     private void getCalculation(){
-        MyIterator<OfficeFloor> it = OfficeList.iterator();
+        MyIterator<Floor> it = OfficeList.iterator();
         while (it.hasNext()){
-            OfficeFloor OfficeFloor = it.next();
-            countRooms += OfficeFloor.getCountRooms();
-            square     += OfficeFloor.getSquare();
+            Floor Floor = it.next();
+            countRooms += Floor.getCountRooms();
+            square     += Floor.getSquare();
         }
     }
 
     @Nullable
-    private MyListIterator<Office> findOffice(int numberOffice){
+    private MyListIterator<Space> findOffice(int numberOffice){
         int tmp = numberOffice;
         for(int i = 0; i < this.OfficeList.size(); i++){
             if(tmp >= this.OfficeList.get(i).size())
@@ -67,7 +66,7 @@ public class OfficeBuilding implements Building {
         return null;
     }
 
-    public Office getSpace(int numberOffice){
+    public Space getSpace(int numberOffice){
         var it = findOffice(numberOffice);
         if (it == null)
             throw new FloorIndexOutOfBoundsException();
@@ -108,22 +107,22 @@ public class OfficeBuilding implements Building {
         }
     }
 
-    public OfficeFloor set(int index, Floor OfficeFloor){
+    public Floor set(int index, Floor Floor){
         if(index<0 || index>this.OfficeList.size())
             throw new FloorIndexOutOfBoundsException();
         RecalculateFloorDecr(OfficeList.get(index).MyListIterator(0));
-        OfficeList.set(index,(OfficeFloor) OfficeFloor);
+        OfficeList.set(index,(Floor) Floor);
         RecalculateFloorIncr(OfficeList.get(index).MyListIterator(0));
         return OfficeList.get(index);
     }
 
-    public OfficeFloor get(int index){
+    public Floor get(int index){
         if(index<0 || index>this.OfficeList.size())
             throw new FloorIndexOutOfBoundsException();
         return OfficeList.get(index);
     }
 
-    public MyLinkedList<OfficeFloor> getSpaceList() { return OfficeList; }
+    public MyLinkedList<Floor> getSpaceList() { return OfficeList; }
 
     public int size() { return OfficeList.size(); }
 
@@ -152,15 +151,23 @@ public class OfficeBuilding implements Building {
 
     public double getSquare() { return square; }
 
-    public MyLinkedList<Office> sortedOffice(){
+    public MyLinkedList<Space> sortedSpace(){
         int countOffices = this.getCountSpace();
-        MyLinkedList<Office> tmp = new MyLinkedList<>();
+        MyLinkedList<Space> tmp = new MyLinkedList<>();
         for(int i = 0; i < countOffices; i++) {
             var it = this.getSpace(i);
             tmp.add(it);
         }
-        Comparator<Office> comparator = Comparator.comparing(Office::getSquare);
+        Comparator<Space> comparator = Comparator.comparing(Space::getSquare);
         tmp.sort(comparator);
         return tmp;
+    }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "Count Floors = " + OfficeList.size() +
+                ", SpaceList = " + OfficeList.toString() +
+                '}';
     }
 }

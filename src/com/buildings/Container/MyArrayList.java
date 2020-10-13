@@ -34,7 +34,7 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
         this.capacity = DEFAULT_CAPACITY;
         this.data = new Object[DEFAULT_CAPACITY];
     }
-
+    // но я же могу вызвать метод ремув например дааааа но я могу прямо из коллекции что-то удалить через метод коллекции и там в библиотеках конкарент что-то там я видел и экспешны это вроде в атомиках где-то там
     public boolean set(int index, T value) {
         if (index < 0 || index > this.size())
             throw new IllegalArgumentException();
@@ -67,6 +67,11 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
         this.size -= 1;
         this.data[this.size] = null;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return ArraysMethods.toString(this.data, 0, this.size() - 1);
     }
 
     public MyListIterator<T> iterator() {

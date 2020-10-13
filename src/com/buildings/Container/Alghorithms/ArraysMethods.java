@@ -1,7 +1,10 @@
 package com.buildings.Container.Alghorithms;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Comparator;
+import java.util.Objects;
 
 public class ArraysMethods {
     private static void RangeCheck(int length, int fromIndex, int toIndex) {
@@ -34,7 +37,7 @@ public class ArraysMethods {
     }
 
     @SuppressWarnings("unchecked")
-    public static<T> void merge(Object[] array, int low, int mid, int high) {
+    public static void merge(Object[] array, int low, int mid, int high) {
         Object[] leftArray = new Object[mid - low + 1];
         Object[] rightArray = new Object[high - mid];
 
@@ -97,5 +100,30 @@ public class ArraysMethods {
                 array[i] = rightArray[rightIndex++];
             }
         }
+
     }
+
+    @NotNull public static String toString(@Nullable Object[] array, int low, int high){
+        if(array == null)
+            return "Null";
+        if(array.length == 0)
+            return "[]";
+
+        RangeCheck(array.length, low, high);
+        StringBuilder b = new StringBuilder();
+        b.append("[");
+        for(int i = 0;;i++){
+            b.append(Objects.toString(array[i]));
+            if(i == high)
+                return b.append("]").toString();
+            b.append(", ");
+        }
+    }
+
+    static public boolean equals(Object[] o1, Object[] o2) {
+        if(o1 == o2)
+            return true;
+        return false;
+    }
+
 }

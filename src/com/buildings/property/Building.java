@@ -24,6 +24,8 @@ public interface Building {
 
     double getSquare();
 
+    AbstractArray<Space> sortedSpace();
+
     AbstractArray<? extends Floor> getSpaceList();
 
 }

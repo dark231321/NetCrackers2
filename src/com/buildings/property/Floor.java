@@ -5,7 +5,7 @@ import com.buildings.Container.MyListIterator;
 
 
 public interface Floor {
-    MyListIterator<? extends Space> MyListIterator(int index);
+    MyListIterator<Space> MyListIterator(int index);
 
     int size();
 

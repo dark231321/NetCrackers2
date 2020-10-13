@@ -117,6 +117,23 @@ public class MyLinkedList<T> extends AbstractArray<T> {
         return tmp;
     }
 
+    @SuppressWarnings("unchecked")
+    public T[] toArray(){
+        var it = new LnkItr();
+        int size = this.size();
+        T[] tmp = (T[]) new Object[this.size()];
+        for(int i = 0; i< size; i++){
+            tmp[i] = it.next();
+        }
+        return tmp;
+    }
+
+    @Override
+    public String toString() {
+        T[] tmp = toArray();
+        return ArraysMethods.toString(tmp,0, tmp.length - 1);
+    }
+
     public MyLinkedList.Node<T> addAfter(T element, T value){
         MyLinkedList.Node<T> tmp = search(element);
         if(tmp == null)
@@ -169,12 +186,7 @@ public class MyLinkedList<T> extends AbstractArray<T> {
 
     @SuppressWarnings("unchecked")
     public void sort(Comparator<? super T> pred){
-        var it = new LnkItr();
-        int size = this.size();
-        T[] tmp = (T[]) new Object[this.size()];
-        for(int i = 0; i< size; i++){
-            tmp[i] = it.next();
-        }
+        T[] tmp = toArray();
         ArraysMethods.sort(tmp,0, size-1, pred);
         this.clear();
         for(int i = 0; i< size; i++){
