@@ -1,6 +1,7 @@
 package com.buildings.Container;
 
 import com.buildings.Container.Alghorithms.ArraysMethods;
+import com.buildings.Container.Alghorithms.MyCloneable;
 import jdk.internal.vm.annotation.ForceInline;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Comparator;
 import java.util.RandomAccess;
 
-public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
+public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, MyCloneable {
 
     private final int DEFAULT_CAPACITY = 10;
     private static final Object[] EMPTY_DATA = new Object[0];
@@ -34,7 +35,7 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
         this.capacity = DEFAULT_CAPACITY;
         this.data = new Object[DEFAULT_CAPACITY];
     }
-    // но я же могу вызвать метод ремув например дааааа но я могу прямо из коллекции что-то удалить через метод коллекции и там в библиотеках конкарент что-то там я видел и экспешны это вроде в атомиках где-то там
+
     public boolean set(int index, T value) {
         if (index < 0 || index > this.size())
             throw new IllegalArgumentException();
@@ -111,17 +112,32 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MyArrayList<?> that = (MyArrayList<?>) o;
-        return  size == that.size &&
-                capacity == that.capacity &&
-                Arrays.equals(data, that.data);
+        MyArrayList<?> other = (MyArrayList<?>) o;
+        Object[] otherArray = other.data;
+        Object[] thisArray = this.data;
+        int s = other.size();;
+        if(s == this.size()){
+            for(int i = 0; i < s; i++){
+                if(!Objects.equals(otherArray[i], thisArray[i]))
+                    return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(DEFAULT_CAPACITY, size, capacity);
-        result = 31 * result + Arrays.hashCode(data);
+        result = 31 * result + ArraysMethods.hashCode(data, this.size);
         return result;
+    }
+
+    public Object clone() {
+        MyArrayList<?> v = new MyArrayList<>();
+        v.size = this.size;
+        v.capacity = this.capacity;
+        v.data = ArraysMethods.deepCopy(this.data, this.capacity);
+        return v;
     }
 
     @SuppressWarnings("unchecked")

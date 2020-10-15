@@ -134,6 +134,35 @@ public class MyLinkedList<T> extends AbstractArray<T> {
         return ArraysMethods.toString(tmp,0, tmp.length - 1);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyLinkedList<?> that = (MyLinkedList<?>) o;
+        if(that.size() != this.size())
+            return false;
+        else {
+            var oIt = that.iterator();
+            var tIt = this.iterator();
+            while(oIt.hasNext() && tIt.hasNext()){
+                if(!Objects.equals(oIt.next(), tIt.next()))
+                    return false;
+            }
+            return true;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 31;
+        var it = this.iterator();
+        while (it.hasNext()){
+            Object object = it.next();
+            result = result*31 + (object == null ? 0 : object.hashCode());
+        }
+        return result;
+    }
+
     public MyLinkedList.Node<T> addAfter(T element, T value){
         MyLinkedList.Node<T> tmp = search(element);
         if(tmp == null)

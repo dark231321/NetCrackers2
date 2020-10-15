@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6353e02e-178e-4792-98e6-67e8c85cdafd" name="Default Changelist" comment="release v4">
-      <change afterPath="$PROJECT_DIR$/src/com/buildings/property/Algorithms/PlacementExchanger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InexchangeableFloorsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InexchangeableSpacesException.java" afterDir="false" />
+    <list default="true" id="6353e02e-178e-4792-98e6-67e8c85cdafd" name="Default Changelist" comment="release v4.1">
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/Container/Alghorithms/MyCloneable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/Alghorithms/ArraysMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/Alghorithms/ArraysMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$Itr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$Itr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$ListItr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$ListItr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/Dwelling.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/DwellingFloor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/build/Flat.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/Alghorithms/ArraysMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/Alghorithms/ArraysMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyIterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Exceptions/FloorIndexOutOfBoundsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/FloorIndexOutOfBoundsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Exceptions/InvalidRoomsCountException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InvalidRoomsCountException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Exceptions/InvalidSpaceAreaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InvalidSpaceAreaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Exceptions/SpaceIndexOutOfBoundsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/SpaceIndexOutOfBoundsException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Office/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/Office.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Office/OfficeBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeBuilding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/Office/OfficeFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeFloor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Test/BuildTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Test/BuildTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Test/OfficeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Test/OfficeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/build/Dwelling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/build/Dwelling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/build/DwellingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/build/DwellingFloor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/build/Flat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/build/Flat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Building.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Floor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Office/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/Office.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeFloor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Space.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Space.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/build/Dwelling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/build/Dwelling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/build/DwellingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/build/DwellingFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/build/Flat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/build/Flat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -84,6 +80,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="public" />
@@ -167,7 +164,9 @@
       <workItem from="1602171565982" duration="4950000" />
       <workItem from="1602317249061" duration="2491000" />
       <workItem from="1602330135091" duration="7000" />
-      <workItem from="1602602510391" duration="10194000" />
+      <workItem from="1602602510391" duration="10432000" />
+      <workItem from="1602742244393" duration="6013000" />
+      <workItem from="1602773328769" duration="14341000" />
     </task>
     <task id="LOCAL-00001" summary="msg">
       <created>1601829959398</created>
@@ -211,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602174019902</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="release v4">
+      <created>1602614447136</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1602614447136</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +228,8 @@
     <MESSAGE value="release v2" />
     <MESSAGE value="release v3" />
     <MESSAGE value="release v4" />
-    <option name="LAST_COMMIT_MESSAGE" value="release v4" />
+    <MESSAGE value="release v4.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="release v4.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Deployment" timestamp="1601889496017">
@@ -245,10 +252,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="774" y="218" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1602604822618" />
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1602611253035">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1602784639112">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1602611253035" />
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1602784639112" />
     <state x="207" y="195" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1602604693659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -265,10 +272,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="516" y="268" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1602109808203" />
-    <state x="163" y="7" key="CommitChangelistDialog2" timestamp="1602614435817">
+    <state x="163" y="7" key="CommitChangelistDialog2" timestamp="1602797149158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="163" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1602614435817" />
+    <state x="163" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1602797149158" />
     <state width="409" height="466" key="DebuggerActiveHint" timestamp="1601360853337">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -277,54 +284,54 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="930" y="311" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602172298304" />
-    <state width="1168" height="254" key="GridCell.Tab.0.bottom" timestamp="1602614327138">
+    <state width="1493" height="200" key="GridCell.Tab.0.bottom" timestamp="1602796741877">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602614327138" />
-    <state width="1168" height="254" key="GridCell.Tab.0.center" timestamp="1602614327138">
+    <state width="1493" height="200" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602796741877" />
+    <state width="1493" height="200" key="GridCell.Tab.0.center" timestamp="1602796741877">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602614327138" />
-    <state width="1168" height="254" key="GridCell.Tab.0.left" timestamp="1602614327138">
+    <state width="1493" height="200" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602796741877" />
+    <state width="1493" height="200" key="GridCell.Tab.0.left" timestamp="1602796741877">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602614327137" />
-    <state width="1168" height="254" key="GridCell.Tab.0.right" timestamp="1602614327138">
+    <state width="1493" height="200" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602796741877" />
+    <state width="1493" height="200" key="GridCell.Tab.0.right" timestamp="1602796741877">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602614327138" />
-    <state width="1168" height="254" key="GridCell.Tab.1.bottom" timestamp="1602614327138">
+    <state width="1493" height="200" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602796741877" />
+    <state width="1493" height="196" key="GridCell.Tab.1.bottom" timestamp="1602781367782">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602614327138" />
-    <state width="1168" height="254" key="GridCell.Tab.1.center" timestamp="1602614327138">
+    <state width="1493" height="196" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602781367782" />
+    <state width="1493" height="196" key="GridCell.Tab.1.center" timestamp="1602781367782">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1602614327138" />
-    <state width="1168" height="254" key="GridCell.Tab.1.left" timestamp="1602614327138">
+    <state width="1493" height="196" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1602781367782" />
+    <state width="1493" height="196" key="GridCell.Tab.1.left" timestamp="1602781367782">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1602614327138" />
-    <state width="1168" height="254" key="GridCell.Tab.1.right" timestamp="1602614327138">
+    <state width="1493" height="196" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1602781367782" />
+    <state width="1493" height="196" key="GridCell.Tab.1.right" timestamp="1602781367782">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1168" height="254" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1602614327138" />
+    <state width="1493" height="196" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1602781367782" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1601889565807">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601889565807" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1602602509001">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1602773332846">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1602602509001" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1602773332846" />
     <state x="498" y="306" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1601278990242">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="306" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824@0.0.1536.824" timestamp="1601278990242" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602614306875">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602796719306">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1602614306875" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1602796719306" />
     <state x="499" y="178" key="extract.method.dialog" timestamp="1602604109392">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -351,13 +358,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/buildings/Test/OfficeTest.java</url>
-          <line>76</line>
+          <line>80</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/buildings/Main.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/src/com/buildings/Test/BuildTest.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/buildings/Test/BuildTest.java</url>
+          <line>28</line>
+          <properties class="com.buildings.Test.BuildTest" method="start">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

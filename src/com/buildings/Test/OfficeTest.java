@@ -12,7 +12,8 @@ import java.util.Arrays;
 
 public class OfficeTest {
     static OfficeBuilding officeBuilding;
-
+    static OfficeBuilding officeBuilding1;
+    static int k = 1;
     private OfficeTest(){
     }
 
@@ -20,6 +21,8 @@ public class OfficeTest {
         MyLinkedList<Floor> myArrayList = new MyLinkedList<>();
         start(myArrayList);
         officeBuilding = OfficeBuilding.ofOfficeBuilding(myArrayList);
+        officeBuilding1 = OfficeBuilding.ofOfficeBuilding(myArrayList);
+        System.out.println("Equals: " + officeBuilding.getSpaceList().equals(officeBuilding1.getSpaceList()));
         print();
     }
 
@@ -30,10 +33,11 @@ public class OfficeTest {
                 if(i == 0)
                     flatList.add(new Office());
                 else
-                    flatList.add(new Office(i,i*10));
+                    flatList.add(new Office(i,i*10 * k));
             }
             myArrayList.add(new OfficeFloor(flatList));
         }
+        k++;
     }
 
     static private void printDate(){
@@ -88,7 +92,9 @@ public class OfficeTest {
             System.out.print(res.get(i).getSquare() + " ");
         }
         System.out.println();
-        System.out.println("EXCEPTIONS: ");
+        System.out.println("Hash code: ");
+        System.out.println(officeBuilding.hashCode());
+        System.out.println(officeBuilding1.hashCode());
         exceptions();
     }
 }

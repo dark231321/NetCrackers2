@@ -4,6 +4,8 @@ import com.buildings.property.Exceptions.InvalidRoomsCountException;
 import com.buildings.property.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Space;
 
+import java.util.Objects;
+
 public class Flat implements Space {
     private double square;
     private int countRooms;
@@ -28,6 +30,11 @@ public class Flat implements Space {
         this.countRooms = countRooms;
     }
 
+    @Override
+    public Object clone() {
+        return new Flat(this.countRooms, this.square);
+    }
+
     public Flat(){
         this.square = 50.0;
         this.countRooms = 2;
@@ -49,5 +56,19 @@ public class Flat implements Space {
                 "square=" + square +
                 ", countRooms=" + countRooms +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flat flat = (Flat) o;
+        return Double.compare(flat.square, square) == 0 &&
+                countRooms == flat.countRooms;
+    }
+
+    @Override
+    public int hashCode() {
+        return countRooms ^ (int) ((long) square);
     }
 }

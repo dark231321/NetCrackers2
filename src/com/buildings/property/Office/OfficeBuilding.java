@@ -15,7 +15,7 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class OfficeBuilding implements Building {
-    private MyLinkedList<Floor> OfficeList;
+    private MyLinkedList<Floor> FloorList;
     private static MyLinkedList<Floor> Office_LIST;
     private int countRooms = 0;
     private double square = 0.0;
@@ -23,9 +23,9 @@ public class OfficeBuilding implements Building {
     public OfficeBuilding(@NotNull MyLinkedList<Integer> countFloor){
         if(countFloor.size() == 0)
             throw new SpaceIndexOutOfBoundsException();
-        OfficeList = new MyLinkedList<>();
+        FloorList = new MyLinkedList<>();
         for(int i =0; i < countFloor.size(); i++){
-            OfficeList.set(i, new OfficeFloor(countFloor.get(i)));
+            FloorList.set(i, new OfficeFloor(countFloor.get(i)));
         }
         getCalculation();
     }
@@ -33,20 +33,20 @@ public class OfficeBuilding implements Building {
     private OfficeBuilding() {
         if(Office_LIST == null)
             throw new SpaceIndexOutOfBoundsException();
-        this.OfficeList = Office_LIST;
+        this.FloorList = Office_LIST;
         Office_LIST = null;
         getCalculation();
     }
 
     @NotNull
-    public static OfficeBuilding ofOfficeBuilding(MyLinkedList<Floor> OfficeList) {
-        Objects.requireNonNull(OfficeList);
-        Office_LIST = OfficeList;
+    public static OfficeBuilding ofOfficeBuilding(MyLinkedList<Floor> FloorList) {
+        Objects.requireNonNull(FloorList);
+        Office_LIST = FloorList;
         return new OfficeBuilding();
     }
 
     private void getCalculation(){
-        MyIterator<Floor> it = OfficeList.iterator();
+        MyIterator<Floor> it = FloorList.iterator();
         while (it.hasNext()){
             Floor Floor = it.next();
             countRooms += Floor.getCountRooms();
@@ -57,11 +57,11 @@ public class OfficeBuilding implements Building {
     @Nullable
     private MyListIterator<Space> findOffice(int numberOffice){
         int tmp = numberOffice;
-        for(int i = 0; i < this.OfficeList.size(); i++){
-            if(tmp >= this.OfficeList.get(i).size())
-                tmp -= this.OfficeList.get(i).size();
+        for(int i = 0; i < this.FloorList.size(); i++){
+            if(tmp >= this.FloorList.get(i).size())
+                tmp -= this.FloorList.get(i).size();
             else
-                return this.OfficeList.get(i).MyListIterator(tmp);
+                return this.FloorList.get(i).MyListIterator(tmp);
         }
         return null;
     }
@@ -108,43 +108,43 @@ public class OfficeBuilding implements Building {
     }
 
     public Floor set(int index, Floor Floor){
-        if(index<0 || index>this.OfficeList.size())
+        if(index<0 || index>this.FloorList.size())
             throw new FloorIndexOutOfBoundsException();
-        RecalculateFloorDecr(OfficeList.get(index).MyListIterator(0));
-        OfficeList.set(index,(Floor) Floor);
-        RecalculateFloorIncr(OfficeList.get(index).MyListIterator(0));
-        return OfficeList.get(index);
+        RecalculateFloorDecr(FloorList.get(index).MyListIterator(0));
+        FloorList.set(index,(Floor) Floor);
+        RecalculateFloorIncr(FloorList.get(index).MyListIterator(0));
+        return FloorList.get(index);
     }
 
     public Floor get(int index){
-        if(index<0 || index>this.OfficeList.size())
+        if(index<0 || index>this.FloorList.size())
             throw new FloorIndexOutOfBoundsException();
-        return OfficeList.get(index);
+        return FloorList.get(index);
     }
 
-    public MyLinkedList<Floor> getSpaceList() { return OfficeList; }
+    public MyLinkedList<Floor> getSpaceList() { return FloorList; }
 
-    public int size() { return OfficeList.size(); }
+    public int size() { return FloorList.size(); }
 
     public int getCountRooms(){ return countRooms; }
 
     public int getCountSpace(){
-        if(this.OfficeList == null)
+        if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
         int tmp = 0;
-        for(int i = 0;i < this.OfficeList.size(); i++) {
-            tmp += this.OfficeList.get(i).size();
+        for(int i = 0;i < this.FloorList.size(); i++) {
+            tmp += this.FloorList.get(i).size();
         }
         return tmp;
     }
 
     public double getBestSpace() {
-        if(this.OfficeList == null)
+        if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
-        double tmp = this.OfficeList.get(0).getBestSpace();
-        for(int i = 0; i < OfficeList.size(); i++){
-            if(tmp < OfficeList.get(i).getBestSpace())
-                tmp = OfficeList.get(i).getBestSpace();
+        double tmp = this.FloorList.get(0).getBestSpace();
+        for(int i = 0; i < FloorList.size(); i++){
+            if(tmp < FloorList.get(i).getBestSpace())
+                tmp = FloorList.get(i).getBestSpace();
         }
         return tmp;
     }
@@ -166,8 +166,28 @@ public class OfficeBuilding implements Building {
     @Override
     public String toString() {
         return "Building{" +
-                "Count Floors = " + OfficeList.size() +
-                ", SpaceList = " + OfficeList.toString() +
+                "Count Floors = " + FloorList.size() +
+                ", SpaceList = " + FloorList.toString() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OfficeBuilding that = (OfficeBuilding) o;
+        return countRooms == that.countRooms &&
+                Double.compare(that.square, square) == 0 &&
+                this.FloorList.equals(that.FloorList);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.FloorList.size() ^ this.FloorList.hashCode();
+    }
+
+    @Override
+    public Object clone() {
+        return null;
     }
 }

@@ -10,6 +10,8 @@ import com.buildings.property.Floor;
 import com.buildings.property.Space;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class DwellingFloor implements Floor {
     private MyArrayList<Space> SpaceList;
     private int countRooms = 0;
@@ -53,6 +55,11 @@ public class DwellingFloor implements Floor {
         if(countRooms < 0)
             throw new SpaceIndexOutOfBoundsException();
         return countRooms;
+    }
+
+    @Override
+    public Object clone() {
+        return null;
     }
 
     public double getSquare(){
@@ -116,5 +123,20 @@ public class DwellingFloor implements Floor {
                 "CountRooms= " + countRooms +
                 ", SpaceList=" + SpaceList.toString() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DwellingFloor that = (DwellingFloor) o;
+        return  countRooms == that.countRooms &&
+                Double.compare(that.square, square) == 0 &&
+                SpaceList.equals(that.SpaceList);
+    }
+
+    @Override
+    public int hashCode() {
+        return countRooms ^ this.SpaceList.hashCode();
     }
 }

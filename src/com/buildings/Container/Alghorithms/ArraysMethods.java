@@ -2,7 +2,6 @@ package com.buildings.Container.Alghorithms;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.Comparator;
 import java.util.Objects;
 
@@ -121,9 +120,38 @@ public class ArraysMethods {
     }
 
     static public boolean equals(Object[] o1, Object[] o2) {
-        if(o1 == o2)
-            return true;
-        return false;
+        if (o1 != o2) {
+            if (o1.length != o2.length)
+                return false;
+            for (int i = 0; i < o1.length; i++) {
+                if (!o1[i].equals(o2[i]))
+                    return false;
+            }
+        }
+        return true;
     }
 
+    static public int hashCode(Object[] o, int size) {
+        if(o == null){
+            return 0;
+        } else {
+            int result = 1;
+            int s = o.length;
+            for (int i = 0; i < size; i++) {
+                Object object = o[i];
+                result = result * 31 + (object == null ? 0 : object.hashCode());
+            }
+            return result;
+        }
+    }
+
+    static public Object[] deepCopy(Object[] o1, int size){
+        Object[] var = new Object[size];
+        for(int i = 0; i < size; i ++){
+            Object object = o1[i];
+            var[i] = (object == null ? null :
+                    object instanceof MyCloneable ? ((MyCloneable) object).clone() : object);
+        }
+        return var;
+    }
 }

@@ -11,14 +11,18 @@ import java.util.Arrays;
 
 public class BuildTest {
     static Dwelling dwelling;
-
+    static Dwelling dwelling2;
     private BuildTest(){
     }
 
     static public void start(){
         MyArrayList<Floor> myArrayList = new MyArrayList<>();
+        MyArrayList<Floor> myArrayList1 = new MyArrayList<>();
+        start(myArrayList1);
         start(myArrayList);
         dwelling = Dwelling.ofDwelling(myArrayList);
+        dwelling2 = Dwelling.ofDwelling(myArrayList1);
+        System.out.println(dwelling.equals(dwelling2));
         print();
     }
 
@@ -29,7 +33,7 @@ public class BuildTest {
                 if(i == 0)
                     flatList.add(new Flat());
                 else
-                    flatList.add(new Flat(i, i*10));
+                    flatList.add(new Flat(i, i* 10));
             }
             myArrayList.set(j, new DwellingFloor(flatList));
         }
@@ -86,7 +90,10 @@ public class BuildTest {
             System.out.print(res.get(i).getSquare() + " ");
         }
         System.out.println();
-        System.out.println("EXCEPTIONS: ");
+        System.out.println();
+        System.out.println("Hash code: ");
+        System.out.println(dwelling.hashCode());
+        System.out.println(dwelling2.hashCode());
         exceptions();
     }
 }

@@ -10,6 +10,7 @@ import com.buildings.property.Floor;
 import com.buildings.property.Space;
 import org.jetbrains.annotations.NotNull;
 
+
 public class OfficeFloor implements Floor {
     private MyLinkedList<Space> SpaceList;
 
@@ -54,6 +55,11 @@ public class OfficeFloor implements Floor {
         return countRooms;
     }
 
+    @Override
+    public Object clone() {
+        return null;
+    }
+
     public double getSquare(){
         if(square < 0)
             throw new InvalidSpaceAreaException();
@@ -72,8 +78,8 @@ public class OfficeFloor implements Floor {
         Space tmp = SpaceList.iterator(index).next();
         this.countRooms += Space.getCountRooms()  - tmp.getCountRooms();
         this.square += Space.getSquare() - tmp.getSquare();
-        SpaceList.set(index,(Space) Space);
-        return (Space) Space;
+        SpaceList.set(index, Space);
+        return Space;
     }
 
     public Space setRooms(int index, int newCountRooms) {
@@ -114,5 +120,20 @@ public class OfficeFloor implements Floor {
                 "CountRooms= " + countRooms +
                 ", SpaceList=" + SpaceList.toString() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OfficeFloor that = (OfficeFloor) o;
+        return countRooms == that.countRooms &&
+                Double.compare(that.square, square) == 0 &&
+                SpaceList.equals(that.SpaceList);
+    }
+
+    @Override
+    public int hashCode() {
+        return countRooms ^ this.SpaceList.hashCode();
     }
 }

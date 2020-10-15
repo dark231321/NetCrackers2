@@ -1,8 +1,9 @@
 package com.buildings.property;
 
 import com.buildings.Container.AbstractArray;
+import com.buildings.Container.Alghorithms.MyCloneable;
 
-public interface Building {
+public interface Building extends MyCloneable {
 
     Space getSpace(int numberOffice);
 

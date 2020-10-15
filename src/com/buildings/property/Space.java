@@ -1,6 +1,8 @@
 package com.buildings.property;
 
-public interface Space {
+import com.buildings.Container.Alghorithms.MyCloneable;
+
+public interface Space extends MyCloneable {
 
     double getSquare();
 
@@ -10,4 +12,5 @@ public interface Space {
 
     void setCountRooms(int countRooms);
 
+    Object clone();
 }

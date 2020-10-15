@@ -1,37 +1,23 @@
 package com.buildings;
 import com.buildings.Container.MyArrayList;
+import com.buildings.Container.MyLinkedList;
 import com.buildings.Test.BuildTest;
 import com.buildings.Test.OfficeTest;
+import com.buildings.property.Office.Office;
+import com.buildings.property.Space;
+import com.buildings.property.build.Flat;
 
 public class Main {
     public static void main(String[] args) {
-        MyArrayList<MyArrayList<Integer>> myArrayList = new MyArrayList<>(10);
-        MyArrayList<MyArrayList<Integer>> myArrayList1 = new MyArrayList<>(10);
-        for(int i = 0; i<3 ;i++){
-            MyArrayList<Integer> tmp = new MyArrayList<>();
-            MyArrayList<Integer> tmp1 = new MyArrayList<>();
-            for(int j = 0; j<3 ;j++){
-                tmp.add(j);
-                tmp1.add(j*2);
-            }
-            myArrayList.add(tmp);
-            myArrayList1.add(tmp1);
-        }
-        var tmp1 = myArrayList.equals(myArrayList1);
-        System.out.println(myArrayList.equals(myArrayList1));
-        for(int i = 0; i<3 ;i++){
-            for(int j = 0; j<3 ;j++){
-                System.out.print(myArrayList.get(i).get(j) + " ");
-            }
-            System.out.println();
-        }
-        for(int i = 0; i<3 ;i++){
-            for(int j = 0; j<3 ;j++){
-                System.out.print(myArrayList1.get(i).get(j) + " ");
-            }
-            System.out.println();
-        }
-        //System.out.println(80>>>16);
+        Space space = new Flat(3, 20);
+        Space space1 = new Flat(2,40);
+        MyArrayList<Space> test = new MyArrayList<>();
+        test.add(space);
+        test.add(space1);
+        var newArr = test.clone();
+        space.setCountRooms(10);
+        System.out.println(test.toString());
+        System.out.println(newArr.toString());
         //BuildTest.start();
         //OfficeTest.start();
     }

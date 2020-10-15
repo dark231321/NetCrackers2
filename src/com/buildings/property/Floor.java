@@ -1,10 +1,11 @@
 package com.buildings.property;
 
 import com.buildings.Container.AbstractArray;
+import com.buildings.Container.Alghorithms.MyCloneable;
 import com.buildings.Container.MyListIterator;
 
 
-public interface Floor {
+public interface Floor extends MyCloneable {
     MyListIterator<Space> MyListIterator(int index);
 
     int size();
@@ -25,4 +26,5 @@ public interface Floor {
 
     int getCountRooms();
 
+    Object clone();
 }

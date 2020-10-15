@@ -15,7 +15,7 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Dwelling implements Building {
-    private MyArrayList<Floor> SpaceList;
+    private MyArrayList<Floor> FloorList;
     private static MyArrayList<Floor> Space_LIST;
     private int countRooms = 0;
     private double square = 0.0;
@@ -23,9 +23,9 @@ public class Dwelling implements Building {
     public Dwelling(@NotNull MyArrayList<Integer> countFloor){
         if(countFloor.size() < 0)
             throw new IllegalArgumentException();
-        SpaceList = new MyArrayList<>(countFloor.size());
+        FloorList = new MyArrayList<>(countFloor.size());
         for(int i =0; i < countFloor.size(); i++){
-           SpaceList.set(i, new DwellingFloor(countFloor.get(i)));
+           FloorList.set(i, new DwellingFloor(countFloor.get(i)));
         }
         getCalculation();
     }
@@ -33,20 +33,20 @@ public class Dwelling implements Building {
     private Dwelling() {
         if(Space_LIST == null)
             throw new IllegalArgumentException();
-        this.SpaceList = Space_LIST;
+        this.FloorList = Space_LIST;
         Space_LIST = null;
         getCalculation();
     }
 
     @NotNull
-    public static Dwelling ofDwelling(MyArrayList<Floor> SpaceList) {
-        Objects.requireNonNull(SpaceList);
-        Space_LIST = SpaceList;
+    public static Dwelling ofDwelling(MyArrayList<Floor> FloorList) {
+        Objects.requireNonNull(FloorList);
+        Space_LIST = FloorList;
         return new Dwelling();
     }
 
     private void getCalculation(){
-        MyIterator<Floor> it = SpaceList.iterator();
+        MyIterator<Floor> it = FloorList.iterator();
         while (it.hasNext()){
             Floor Floor = it.next();
             countRooms += Floor.getCountRooms();
@@ -57,11 +57,11 @@ public class Dwelling implements Building {
     @Nullable
     private MyListIterator<Space> findSpace(int numberSpace){
         int tmp = numberSpace;
-        for(int i = 0; i < this.SpaceList.size(); i++){
-            if(tmp >= this.SpaceList.get(i).size())
-                tmp -= this.SpaceList.get(i).size();
+        for(int i = 0; i < this.FloorList.size(); i++){
+            if(tmp >= this.FloorList.get(i).size())
+                tmp -= this.FloorList.get(i).size();
             else
-                return this.SpaceList.get(i).MyListIterator(tmp);
+                return this.FloorList.get(i).MyListIterator(tmp);
         }
         return null;
     }
@@ -88,7 +88,7 @@ public class Dwelling implements Building {
             throw new SpaceIndexOutOfBoundsException();
         countRooms += Space.getCountRooms() - it.get().getCountRooms();
         square += Space.getSquare() - it.get().getSquare();
-        it.set((Space) Space);
+        it.set(Space);
     }
 
     private void RecalculateFloorDecr(@NotNull MyListIterator<? extends Space> iterator){
@@ -108,43 +108,43 @@ public class Dwelling implements Building {
     }
 
     public Floor set(int index,@NotNull Floor Floor){
-        if(index < 0 || index >= SpaceList.size())
+        if(index < 0 || index >= FloorList.size())
             throw new FloorIndexOutOfBoundsException();
-        RecalculateFloorDecr(SpaceList.get(index).MyListIterator(0));
-        SpaceList.set(index,(Floor) Floor);
-        RecalculateFloorIncr(SpaceList.get(index).MyListIterator(0));
-        return SpaceList.get(index);
+        RecalculateFloorDecr(FloorList.get(index).MyListIterator(0));
+        FloorList.set(index, Floor);
+        RecalculateFloorIncr(FloorList.get(index).MyListIterator(0));
+        return FloorList.get(index);
     }
 
     public Floor get(int index){
-        if(index < 0 || index >= SpaceList.size())
+        if(index < 0 || index >= FloorList.size())
             throw new FloorIndexOutOfBoundsException();
-        return SpaceList.get(index);
+        return FloorList.get(index);
     }
 
-    public MyArrayList<Floor> getSpaceList() { return SpaceList; }
+    public MyArrayList<Floor> getSpaceList() { return FloorList; }
 
-    public int size() { return SpaceList.size(); }
+    public int size() { return FloorList.size(); }
 
     public int getCountRooms(){ return countRooms; }
 
     public int getCountSpace(){
-        if(this.SpaceList == null)
+        if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
         int tmp = 0;
-        for(int i = 0;i < this.SpaceList.size(); i++) {
-            tmp += this.SpaceList.get(i).size();
+        for(int i = 0;i < this.FloorList.size(); i++) {
+            tmp += this.FloorList.get(i).size();
         }
         return tmp;
     }
 
     public double getBestSpace() {
-        if(this.SpaceList == null)
+        if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
-        double tmp = this.SpaceList.get(0).getBestSpace();
-        for(int i = 0; i < SpaceList.size(); i++){
-            if(tmp < SpaceList.get(i).getBestSpace())
-                tmp = SpaceList.get(i).getBestSpace();
+        double tmp = this.FloorList.get(0).getBestSpace();
+        for(int i = 0; i < FloorList.size(); i++){
+            if(tmp < FloorList.get(i).getBestSpace())
+                tmp = FloorList.get(i).getBestSpace();
         }
         return tmp;
     }
@@ -166,8 +166,28 @@ public class Dwelling implements Building {
     @Override
     public String toString() {
         return "Dwelling{" +
-                "Count Floors = " + SpaceList.size() +
-                ", SpaceList = " + SpaceList.toString() +
+                "Count Floors = " + FloorList.size() +
+                ", FloorList = " + FloorList.toString() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dwelling dwelling = (Dwelling) o;
+        return  countRooms == dwelling.countRooms &&
+                Double.compare(dwelling.square, square) == 0 &&
+                FloorList.equals(dwelling.FloorList);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.FloorList.size() ^ this.FloorList.hashCode();
+    }
+
+    @Override
+    public Object clone() {
+        return null;
     }
 }
