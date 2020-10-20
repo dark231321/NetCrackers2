@@ -1,8 +1,8 @@
 package com.buildings.property;
 
-import com.buildings.Container.Alghorithms.MyCloneable;
+import java.io.Serializable;
 
-public interface Space extends MyCloneable {
+public interface Space extends Cloneable, Serializable, Comparable<Space>{
 
     double getSquare();
 
@@ -12,5 +12,6 @@ public interface Space extends MyCloneable {
 
     void setCountRooms(int countRooms);
 
-    Object clone();
+    Object clone() throws CloneNotSupportedException;
 }
+

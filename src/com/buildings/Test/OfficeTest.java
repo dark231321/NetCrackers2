@@ -1,10 +1,12 @@
 package com.buildings.Test;
 
 import com.buildings.Container.MyLinkedList;
+import com.buildings.property.Algorithms.Buildings;
+import com.buildings.property.Building;
 import com.buildings.property.Office.Office;
 import com.buildings.property.Office.OfficeBuilding;
 import com.buildings.property.Office.OfficeFloor;
-import com.buildings.property.build.DwellingFloor;
+import com.buildings.property.Dwelling.DwellingFloor;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
 
@@ -17,7 +19,8 @@ public class OfficeTest {
     private OfficeTest(){
     }
 
-    static public void start(){
+    static public void start()
+            throws CloneNotSupportedException {
         MyLinkedList<Floor> myArrayList = new MyLinkedList<>();
         start(myArrayList);
         officeBuilding = OfficeBuilding.ofOfficeBuilding(myArrayList);
@@ -40,13 +43,13 @@ public class OfficeTest {
         k++;
     }
 
-    static private void printDate(){
+    static private void printDate(OfficeBuilding off){
         System.out.println();
-        System.out.println("Best space: " + officeBuilding.getBestSpace());
-        System.out.println("Count Rooms: " + officeBuilding.getCountRooms());
-        System.out.println("Total square: " + officeBuilding.getSquare());
+        System.out.println("Best space: " + off.getBestSpace());
+        System.out.println("Count Rooms: " + off.getCountRooms());
+        System.out.println("Total square: " + off.getSquare());
 
-        var it = officeBuilding.getSpaceList().iterator();
+        var it = off.getSpaceList().iterator();
         while(it.hasNext()){
             var spaceList = it.next().getSpaceList();
             var spaceIt = spaceList.iterator();
@@ -76,25 +79,14 @@ public class OfficeTest {
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
     }
 
-    static private void print(){
-        printDate();
-        var s = officeBuilding.toString();
-        System.out.println(s);
-        System.out.println("Before changes");
-        officeBuilding.setSpace(1, new Office(300));
-        printDate();
-        officeBuilding.removeSpace(1);
-        printDate();
-        officeBuilding.set(0, new OfficeFloor(3));
-        printDate();
-        var res = officeBuilding.sortedSpace();
-        for(int i=0;i < res.size(); i++) {
-            System.out.print(res.get(i).getSquare() + " ");
-        }
-        System.out.println();
-        System.out.println("Hash code: ");
-        System.out.println(officeBuilding.hashCode());
-        System.out.println(officeBuilding1.hashCode());
-        exceptions();
+    static private void print()
+            throws CloneNotSupportedException {
+        printDate(officeBuilding);
+        var newOffice = (OfficeBuilding) officeBuilding.clone();
+        officeBuilding.set(1,new OfficeFloor(1));
+        Buildings.sortBuilding(officeBuilding);
+        printDate(officeBuilding);
+        System.out.println(newOffice.toString());
+        printDate(newOffice);
     }
 }

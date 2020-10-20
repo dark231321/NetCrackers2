@@ -1,14 +1,15 @@
 package com.buildings.property.Office;
 
 import com.buildings.Container.MyLinkedList;
-import com.buildings.Container.MyIterator;
-import com.buildings.Container.MyListIterator;
+import com.buildings.Container.ListIterator;
 import com.buildings.property.Exceptions.FloorIndexOutOfBoundsException;
 import com.buildings.property.Exceptions.InvalidRoomsCountException;
 import com.buildings.property.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Iterator;
 
 
 public class OfficeFloor implements Floor {
@@ -27,8 +28,15 @@ public class OfficeFloor implements Floor {
         getCalculation();
     }
 
-    public MyListIterator<Space> MyListIterator(int index){
-        return SpaceList.iterator(index);
+    public OfficeFloor(){}
+
+    @Override
+    public Iterator<Space> iterator() {
+        return SpaceList.iterator();
+    }
+
+    public ListIterator<Space> MyListIterator(int index){
+        return SpaceList.ListIterator(index);
     }
 
     public OfficeFloor(MyLinkedList<Space> SpaceList){
@@ -41,7 +49,7 @@ public class OfficeFloor implements Floor {
     }
 
     private void getCalculation(){
-        MyIterator<Space> it = SpaceList.iterator();
+        Iterator<Space> it = SpaceList.iterator();
         while (it.hasNext()){
             Space Space = it.next();
             countRooms += Space.getCountRooms();
@@ -56,9 +64,18 @@ public class OfficeFloor implements Floor {
     }
 
     @Override
-    public Object clone() {
-        return null;
+    @SuppressWarnings("unchecked")
+    public Object clone()
+            throws CloneNotSupportedException {
+        OfficeFloor clone = (OfficeFloor) super.clone();
+        clone.SpaceList = new MyLinkedList<>();
+        for(Space space:
+                SpaceList){
+            clone.SpaceList.add((Space) space.clone());
+        }
+        return clone;
     }
+
 
     public double getSquare(){
         if(square < 0)
@@ -75,7 +92,7 @@ public class OfficeFloor implements Floor {
     public Space set(int index, @NotNull Space Space){
         if(index < 0 || index >= this.SpaceList.size())
             throw new FloorIndexOutOfBoundsException();
-        Space tmp = SpaceList.iterator(index).next();
+        Space tmp = SpaceList.ListIterator(index).next();
         this.countRooms += Space.getCountRooms()  - tmp.getCountRooms();
         this.square += Space.getSquare() - tmp.getSquare();
         SpaceList.set(index, Space);
@@ -85,7 +102,7 @@ public class OfficeFloor implements Floor {
     public Space setRooms(int index, int newCountRooms) {
         if(index < 0 || index >= this.SpaceList.size())
             throw new FloorIndexOutOfBoundsException();
-        MyListIterator<Space> it = SpaceList.iterator(index);
+        ListIterator<Space> it = SpaceList.ListIterator(index);
         it.next().setCountRooms(newCountRooms);
         return SpaceList.get(index);
     }
@@ -97,14 +114,14 @@ public class OfficeFloor implements Floor {
     public boolean Remove(int index){
         if(index < 0 || index >= this.SpaceList.size())
             throw new FloorIndexOutOfBoundsException();
-        Space tmp = SpaceList.iterator(index).get();
+        Space tmp = SpaceList.ListIterator(index).get();
         this.square -= tmp.getSquare();
         this.countRooms -= tmp.getCountRooms();
         return SpaceList.remove(index);
     }
 
     public double getBestSpace(){
-        MyIterator<Space> it = SpaceList.iterator();
+        Iterator<Space> it = SpaceList.iterator();
         double tmp = 0;
         while (it.hasNext()){
             Space Space = it.next();
@@ -135,5 +152,10 @@ public class OfficeFloor implements Floor {
     @Override
     public int hashCode() {
         return countRooms ^ this.SpaceList.hashCode();
+    }
+
+    @Override
+    public int compareTo(@NotNull Floor spaces) {
+        return Integer.compare(this.size(), spaces.size());
     }
 }

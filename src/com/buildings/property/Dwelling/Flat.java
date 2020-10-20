@@ -1,10 +1,9 @@
-package com.buildings.property.build;
+package com.buildings.property.Dwelling;
 
 import com.buildings.property.Exceptions.InvalidRoomsCountException;
 import com.buildings.property.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Space;
-
-import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 public class Flat implements Space {
     private double square;
@@ -31,8 +30,9 @@ public class Flat implements Space {
     }
 
     @Override
-    public Object clone() {
-        return new Flat(this.countRooms, this.square);
+    public Object clone()
+            throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public Flat(){
@@ -70,5 +70,10 @@ public class Flat implements Space {
     @Override
     public int hashCode() {
         return countRooms ^ (int) ((long) square);
+    }
+
+    @Override
+    public int compareTo(@NotNull Space space) {
+        return Double.compare(space.getSquare(), this.square);
     }
 }

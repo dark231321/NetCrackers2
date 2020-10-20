@@ -1,6 +1,8 @@
 package com.buildings.Container;
 
-public interface MyListIterator<T> extends MyIterator<T> {
+import java.util.Iterator;
+
+public interface ListIterator<T> extends Iterator<T> {
     boolean hasNext();
 
     boolean hasPrevious();

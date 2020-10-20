@@ -2,6 +2,7 @@ package com.buildings.property.Office;
 import com.buildings.property.Exceptions.InvalidRoomsCountException;
 import com.buildings.property.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Space;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -31,8 +32,9 @@ public class Office implements Space {
     }
 
     @Override
-    public Object clone() {
-        return new Office(this.countRooms, this.square);
+    public Object clone()
+            throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public Office(){
@@ -70,6 +72,11 @@ public class Office implements Space {
     @Override
     public int hashCode() {
         return countRooms ^ (int)((long) square >> 32);
+    }
+
+    @Override
+    public int compareTo(@NotNull Space space) {
+        return Double.compare(space.getSquare(), this.square);
     }
 }
 

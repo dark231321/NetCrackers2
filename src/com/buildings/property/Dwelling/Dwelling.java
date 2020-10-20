@@ -1,8 +1,6 @@
-package com.buildings.property.build;
+package com.buildings.property.Dwelling;
 
-import com.buildings.Container.MyArrayList;
-import com.buildings.Container.MyIterator;
-import com.buildings.Container.MyListIterator;
+import com.buildings.Container.*;
 import com.buildings.property.Exceptions.FloorIndexOutOfBoundsException;
 import com.buildings.property.Exceptions.SpaceIndexOutOfBoundsException;
 import com.buildings.property.Building;
@@ -12,7 +10,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class Dwelling implements Building {
     private MyArrayList<Floor> FloorList;
@@ -32,9 +32,11 @@ public class Dwelling implements Building {
 
     private Dwelling() {
         if(Space_LIST == null)
-            throw new IllegalArgumentException();
-        this.FloorList = Space_LIST;
-        Space_LIST = null;
+            this.FloorList = new MyArrayList<Floor>();
+        else{
+            this.FloorList = Space_LIST;
+            Space_LIST = null;
+        }
         getCalculation();
     }
 
@@ -46,7 +48,7 @@ public class Dwelling implements Building {
     }
 
     private void getCalculation(){
-        MyIterator<Floor> it = FloorList.iterator();
+        Iterator<Floor> it = FloorList.iterator();
         while (it.hasNext()){
             Floor Floor = it.next();
             countRooms += Floor.getCountRooms();
@@ -55,7 +57,7 @@ public class Dwelling implements Building {
     }
 
     @Nullable
-    private MyListIterator<Space> findSpace(int numberSpace){
+    private ListIterator<Space> findSpace(int numberSpace){
         int tmp = numberSpace;
         for(int i = 0; i < this.FloorList.size(); i++){
             if(tmp >= this.FloorList.get(i).size())
@@ -64,6 +66,11 @@ public class Dwelling implements Building {
                 return this.FloorList.get(i).MyListIterator(tmp);
         }
         return null;
+    }
+
+    @Override
+    public Iterator<Floor> iterator() {
+        return FloorList.iterator();
     }
 
     public Space getSpace(int numberSpace){
@@ -91,7 +98,7 @@ public class Dwelling implements Building {
         it.set(Space);
     }
 
-    private void RecalculateFloorDecr(@NotNull MyListIterator<? extends Space> iterator){
+    private void RecalculateFloorDecr(@NotNull ListIterator<? extends Space> iterator){
         while (iterator.hasNext()){
             Space oldSpace = iterator.next();
             this.square -= oldSpace.getSquare();
@@ -99,7 +106,7 @@ public class Dwelling implements Building {
         }
     }
 
-    private void RecalculateFloorIncr(@NotNull MyListIterator<? extends Space> iterator){
+    private void RecalculateFloorIncr(@NotNull ListIterator<? extends Space> iterator){
         while (iterator.hasNext()){
             Space oldSpace = iterator.next();
             this.square += oldSpace.getSquare();
@@ -187,7 +194,16 @@ public class Dwelling implements Building {
     }
 
     @Override
-    public Object clone() {
-        return null;
+    @SuppressWarnings("unchecked")
+    public Object clone()
+            throws CloneNotSupportedException {
+        Dwelling clone = (Dwelling) super.clone();
+        clone.FloorList = new MyArrayList<>();
+        for(Floor floor:
+            FloorList){
+            clone.FloorList.add((Floor)floor.clone());
+        }
+        return clone;
     }
+
 }

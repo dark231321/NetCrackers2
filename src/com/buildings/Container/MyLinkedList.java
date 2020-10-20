@@ -4,16 +4,18 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class MyLinkedList<T> extends AbstractArray<T> {
+public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Serializable {
 
     private MyLinkedList.Node<T> first;
     private MyLinkedList.Node<T> last;
     private int size;
-
     public MyLinkedList() { this.size = 0; }
 
     public void set(int index, T value){
@@ -63,12 +65,11 @@ public class MyLinkedList<T> extends AbstractArray<T> {
         remove(it.getNode());
         return true;
     }
+    @NotNull
     @Override
-    public MyListIterator<T> iterator() {
-        return new LnkItr();
-    }
+    public Iterator<T> iterator() { return new LnkItr(); }
 
-    public MyListIterator<T> iterator(int index){
+    public ListIterator<T> ListIterator(int index){
         return new LnkItr(index);
     }
 
@@ -78,7 +79,7 @@ public class MyLinkedList<T> extends AbstractArray<T> {
     }
 
     public void clear() {
-        MyListIterator<T> it = new LnkItr(0);
+        ListIterator<T> it = new LnkItr(0);
         while(it.hasNext()){
             it.remove();
         }
@@ -92,6 +93,16 @@ public class MyLinkedList<T> extends AbstractArray<T> {
                 return it.getNode();
         }
         return null;
+    }
+
+
+    public Object clone() {
+        MyLinkedList<T> newLinkedList = new MyLinkedList<>();
+        Object[] tmp = Arrays.copyOf(this.toArray(), this.size);
+        for (Object i : tmp){
+            newLinkedList.add((T) i);
+        }
+        return newLinkedList;
     }
 
     public boolean find(T element){
@@ -218,7 +229,7 @@ public class MyLinkedList<T> extends AbstractArray<T> {
         T[] tmp = toArray();
         ArraysMethods.sort(tmp,0, size-1, pred);
         this.clear();
-        for(int i = 0; i< size; i++){
+        for(int i = 0; i< tmp.length; i++){
             this.add(tmp[i]);
         }
     }
@@ -238,7 +249,7 @@ public class MyLinkedList<T> extends AbstractArray<T> {
         }
     }
 
-    private class LnkItr implements MyListIterator<T> {
+    private class LnkItr implements ListIterator<T> {
         int currentIndex;
         MyLinkedList.Node<T> currentElement;
 

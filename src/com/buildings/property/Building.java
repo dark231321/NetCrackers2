@@ -1,9 +1,13 @@
 package com.buildings.property;
 
 import com.buildings.Container.AbstractArray;
-import com.buildings.Container.Alghorithms.MyCloneable;
 
-public interface Building extends MyCloneable {
+import java.io.Serializable;
+import java.util.Iterator;
+
+public interface Building extends Cloneable, Iterable<Floor>, Serializable {
+
+    Iterator<Floor> iterator();
 
     Space getSpace(int numberOffice);
 
@@ -27,6 +31,7 @@ public interface Building extends MyCloneable {
 
     AbstractArray<Space> sortedSpace();
 
-    AbstractArray<? extends Floor> getSpaceList();
+    AbstractArray<Floor> getSpaceList();
 
+    Object clone() throws CloneNotSupportedException;
 }

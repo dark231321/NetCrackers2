@@ -1,12 +1,15 @@
 package com.buildings.Test;
 
 import com.buildings.Container.MyArrayList;
-import com.buildings.property.build.Dwelling;
-import com.buildings.property.build.DwellingFloor;
-import com.buildings.property.build.Flat;
+import com.buildings.property.Dwelling.Dwelling;
+import com.buildings.property.Dwelling.DwellingFloor;
+import com.buildings.property.Dwelling.Flat;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
-
+import com.buildings.property.Algorithms.Buildings;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class BuildTest {
@@ -15,7 +18,7 @@ public class BuildTest {
     private BuildTest(){
     }
 
-    static public void start(){
+    static public void start() throws IOException, CloneNotSupportedException {
         MyArrayList<Floor> myArrayList = new MyArrayList<>();
         MyArrayList<Floor> myArrayList1 = new MyArrayList<>();
         start(myArrayList1);
@@ -39,13 +42,13 @@ public class BuildTest {
         }
     }
 
-    static private void printDate(){
+    static private void printDate(Dwelling dwe){
         System.out.println();
-        System.out.println("Best space: " + dwelling.getBestSpace());
-        System.out.println("Count Rooms: " + dwelling.getCountRooms());
-        System.out.println("Total square: " + dwelling.getSquare());
+        System.out.println("Best space: " + dwe.getBestSpace());
+        System.out.println("Count Rooms: " + dwe.getCountRooms());
+        System.out.println("Total square: " + dwe.getSquare());
 
-        var it = dwelling.getSpaceList().iterator();
+        var it = dwe.getSpaceList().iterator();
         while(it.hasNext()){
             var spaceList = it.next().getSpaceList();
             var spaceIt = spaceList.iterator();
@@ -74,26 +77,14 @@ public class BuildTest {
         catch (Exception ex){ System.out.println(Arrays.toString(ex.getStackTrace())); }
     }
 
-    static private void print(){
-        printDate();
-        var s = dwelling.toString();
-        System.out.println(s);
-        System.out.println("Before changes");
-        dwelling.setSpace(1, new Flat(300));
-        printDate();
-        dwelling.removeSpace(1);
-        printDate();
-        dwelling.set(0, new DwellingFloor(3));
-        printDate();
-        var res = dwelling.sortedSpace();
-        for(int i=0;i < res.size(); i++) {
-            System.out.print(res.get(i).getSquare() + " ");
-        }
-        System.out.println();
-        System.out.println();
-        System.out.println("Hash code: ");
-        System.out.println(dwelling.hashCode());
-        System.out.println(dwelling2.hashCode());
-        exceptions();
+    static private void print()
+            throws IOException, CloneNotSupportedException {
+        printDate(dwelling);
+        Buildings.writeBuilding(dwelling, new FileWriter("Building.txt"));
+        Buildings.outputBuilding(dwelling, new FileOutputStream("Building.bin"));
+        var copy = (Dwelling) dwelling.clone();
+        dwelling.set(0,new DwellingFloor(1));
+        printDate(dwelling);
+        printDate(copy);
     }
 }

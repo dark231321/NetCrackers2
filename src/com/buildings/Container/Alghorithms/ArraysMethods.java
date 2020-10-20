@@ -3,7 +3,6 @@ package com.buildings.Container.Alghorithms;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.Comparator;
-import java.util.Objects;
 
 public class ArraysMethods {
     private static void RangeCheck(int length, int fromIndex, int toIndex) {
@@ -112,7 +111,7 @@ public class ArraysMethods {
         StringBuilder b = new StringBuilder();
         b.append("[");
         for(int i = 0;;i++){
-            b.append(Objects.toString(array[i]));
+            b.append(array[i]);
             if(i == high)
                 return b.append("]").toString();
             b.append(", ");
@@ -136,7 +135,6 @@ public class ArraysMethods {
             return 0;
         } else {
             int result = 1;
-            int s = o.length;
             for (int i = 0; i < size; i++) {
                 Object object = o[i];
                 result = result * 31 + (object == null ? 0 : object.hashCode());
@@ -145,13 +143,4 @@ public class ArraysMethods {
         }
     }
 
-    static public Object[] deepCopy(Object[] o1, int size){
-        Object[] var = new Object[size];
-        for(int i = 0; i < size; i ++){
-            Object object = o1[i];
-            var[i] = (object == null ? null :
-                    object instanceof MyCloneable ? ((MyCloneable) object).clone() : object);
-        }
-        return var;
-    }
 }

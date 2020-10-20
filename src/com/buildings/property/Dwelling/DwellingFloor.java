@@ -1,8 +1,6 @@
-package com.buildings.property.build;
+package com.buildings.property.Dwelling;
 
-import com.buildings.Container.MyArrayList;
-import com.buildings.Container.MyIterator;
-import com.buildings.Container.MyListIterator;
+import com.buildings.Container.*;
 import com.buildings.property.Exceptions.FloorIndexOutOfBoundsException;
 import com.buildings.property.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Exceptions.SpaceIndexOutOfBoundsException;
@@ -10,7 +8,7 @@ import com.buildings.property.Floor;
 import com.buildings.property.Space;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
+import java.util.Iterator;
 
 public class DwellingFloor implements Floor {
     private MyArrayList<Space> SpaceList;
@@ -18,7 +16,7 @@ public class DwellingFloor implements Floor {
     private double square = 0.0;
 
     public DwellingFloor(int size) {
-        if(size == 0)
+        if(size < 0)
             throw new FloorIndexOutOfBoundsException();
 
         this.SpaceList = new MyArrayList<>(size);
@@ -27,14 +25,19 @@ public class DwellingFloor implements Floor {
         getCalculation();
     }
 
-    public MyListIterator<Space> MyListIterator(int index){
-        if(index < 0 || index >= this.SpaceList.size())
-            throw new SpaceIndexOutOfBoundsException();
-        return SpaceList.iterator(index);
+    @Override
+    public Iterator<Space> iterator() {
+        return SpaceList.iterator();
     }
 
-    public DwellingFloor(MyArrayList<Space> SpaceList){
-        this.SpaceList = SpaceList;
+    public ListIterator<Space> MyListIterator(int index){
+        if(index < 0 || index >= this.SpaceList.size())
+            throw new SpaceIndexOutOfBoundsException();
+        return SpaceList.listIterator(index);
+    }
+
+    public DwellingFloor(MyCollection<Space> SpaceList){
+        this.SpaceList = (MyArrayList<Space>) SpaceList;
         getCalculation();
     }
 
@@ -43,7 +46,7 @@ public class DwellingFloor implements Floor {
     }
 
     private void getCalculation(){
-        MyIterator<Space> it = SpaceList.iterator();
+        Iterator<Space> it = SpaceList.iterator();
         while (it.hasNext()){
             Space Space = it.next();
             countRooms += Space.getCountRooms();
@@ -58,9 +61,18 @@ public class DwellingFloor implements Floor {
     }
 
     @Override
-    public Object clone() {
-        return null;
+    @SuppressWarnings("unchecked")
+    public Object clone()
+            throws CloneNotSupportedException {
+        DwellingFloor clone = (DwellingFloor)super.clone();
+        clone.SpaceList = new MyArrayList<>();
+        for (Space space:
+            this.SpaceList){
+            clone.SpaceList.add((Space)space.clone());
+        }
+        return clone;
     }
+
 
     public double getSquare(){
         if(countRooms < 0)
@@ -77,7 +89,7 @@ public class DwellingFloor implements Floor {
     public Space set(int index, @NotNull Space Space){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
-        Space tmp = SpaceList.iterator(index).next();
+        Space tmp = SpaceList.listIterator(index).next();
         this.countRooms += Space.getCountRooms()  - tmp.getCountRooms();
         this.square += Space.getSquare() - tmp.getSquare();
         SpaceList.set(index,(Space) Space);
@@ -87,7 +99,7 @@ public class DwellingFloor implements Floor {
     public Space setRooms(int index, int newCountRooms) {
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
-        MyListIterator<Space> it = SpaceList.iterator(index);
+        ListIterator<Space> it = SpaceList.listIterator(index);
         it.next().setCountRooms(newCountRooms);
         return SpaceList.get(index);
     }
@@ -100,14 +112,14 @@ public class DwellingFloor implements Floor {
     public boolean Remove(int index){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
-        Space tmp = SpaceList.iterator(index).next();
+        Space tmp = SpaceList.listIterator(index).next();
         this.square -= tmp.getSquare();
         this.countRooms -= tmp.getCountRooms();
         return SpaceList.remove(index);
     }
 
     public double getBestSpace(){
-        MyIterator<Space> it = SpaceList.iterator();
+        Iterator<Space> it = SpaceList.iterator();
         double tmp = 0;
         while (it.hasNext()){
             Space Space = it.next();
@@ -138,5 +150,10 @@ public class DwellingFloor implements Floor {
     @Override
     public int hashCode() {
         return countRooms ^ this.SpaceList.hashCode();
+    }
+
+    @Override
+    public int compareTo(@NotNull Floor spaces) {
+        return Integer.compare(this.countRooms, spaces.size());
     }
 }

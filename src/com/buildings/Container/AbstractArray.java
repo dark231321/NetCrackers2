@@ -1,17 +1,21 @@
 package com.buildings.Container;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Objects;
 
 public abstract class AbstractArray<T> implements MyCollection<T> {
 
-    public abstract MyIterator<T> iterator();
+    @NotNull
+    public abstract Iterator<T> iterator();
 
     public boolean isEmpty() {
         return this.size()==0;
     }
 
     public void clear() {
-        MyIterator<T> it = iterator();
+        Iterator<T> it = iterator();
 
         while (it.hasNext()) {
             it.remove();
@@ -19,23 +23,25 @@ public abstract class AbstractArray<T> implements MyCollection<T> {
         }
     }
 
+    public abstract void sort(Comparator<? super T> pred);
+
     public abstract int size();
 
     public boolean add(T e) {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public boolean contains(T value) {
-        MyIterator<T> it = this.iterator();
-        while (it.hasNext()){
-            if(Objects.equals(it.next(), value))
+        for (T t : this) {
+            if (Objects.equals(t, value))
                 return true;
         }
         return false;
     }
 
     public boolean clear(T value) {
-       MyIterator<T> it = iterator();
+       Iterator<T> it = iterator();
        while(it.hasNext()) {
            if(it.next() == value) {
                it.remove();

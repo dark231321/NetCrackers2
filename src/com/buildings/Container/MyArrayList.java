@@ -1,19 +1,16 @@
 package com.buildings.Container;
 
 import com.buildings.Container.Alghorithms.ArraysMethods;
-import com.buildings.Container.Alghorithms.MyCloneable;
 import jdk.internal.vm.annotation.ForceInline;
 import org.jetbrains.annotations.NotNull;
-import java.util.Objects;
-import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Comparator;
-import java.util.RandomAccess;
 
-public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, MyCloneable {
+import java.io.Serializable;
+import java.util.Iterator;
+import java.util.*;
+
+public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, Cloneable, Serializable {
 
     private final int DEFAULT_CAPACITY = 10;
-    private static final Object[] EMPTY_DATA = new Object[0];
     private static final int MAX_SIZE = 2147483639;
     private Object[] data;
     private int size;
@@ -25,7 +22,7 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, My
         } else {
             if (capacity != 0)
                 throw new IllegalArgumentException("Capacity negative" + capacity);
-            this.data = EMPTY_DATA;
+            this.data = new Object[0];
         }
         this.size = 0;
     }
@@ -75,11 +72,16 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, My
         return ArraysMethods.toString(this.data, 0, this.size() - 1);
     }
 
-    public MyListIterator<T> iterator() {
+    @NotNull
+    public Iterator<T> iterator(){
+        return new Itr();
+    }
+
+    public ListIterator<T> listIterator() {
         return new MyArrayList<T>.ListItr(0);
     }
 
-    public MyListIterator<T> iterator(int index) {
+    public ListIterator<T> listIterator(int index) {
         return new MyArrayList<T>.ListItr(index);
     }
 
@@ -115,7 +117,7 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, My
         MyArrayList<?> other = (MyArrayList<?>) o;
         Object[] otherArray = other.data;
         Object[] thisArray = this.data;
-        int s = other.size();;
+        int s = other.size();
         if(s == this.size()){
             for(int i = 0; i < s; i++){
                 if(!Objects.equals(otherArray[i], thisArray[i]))
@@ -132,12 +134,11 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, My
         return result;
     }
 
-    public Object clone() {
-        MyArrayList<?> v = new MyArrayList<>();
-        v.size = this.size;
-        v.capacity = this.capacity;
-        v.data = ArraysMethods.deepCopy(this.data, this.capacity);
-        return v;
+    public Object clone()
+            throws CloneNotSupportedException {
+        MyArrayList<?> clone = (MyArrayList<?>)super.clone();
+        clone.data = Arrays.copyOf(this.data, this.capacity);
+        return clone;
     }
 
     @SuppressWarnings("unchecked")
@@ -153,7 +154,7 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, My
         ArraysMethods.sort((T[])this.data,0, this.size() - 1, pred);
     }
 
-    private class ListItr extends MyArrayList<T>.Itr implements MyListIterator<T> {
+    private class ListItr extends MyArrayList<T>.Itr implements ListIterator<T> {
         ListItr(int index) {
             super(index);
         }
@@ -191,12 +192,15 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, My
         }
     }
 
-    private class Itr implements MyIterator<T> {
+    private class Itr implements Iterator<T> {
         int current;
-        final int last = -1;
 
         public Itr(int index) {
             this.current = index;
+        }
+
+        public Itr() {
+            current = 0;
         }
 
 
