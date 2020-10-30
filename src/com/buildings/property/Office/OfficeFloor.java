@@ -28,6 +28,7 @@ public class OfficeFloor implements Floor {
         getCalculation();
     }
 
+    @NotNull
     @Override
     public Iterator<Space> iterator() {
         return SpaceList.iterator();
