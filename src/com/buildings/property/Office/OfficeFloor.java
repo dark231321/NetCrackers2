@@ -35,7 +35,7 @@ public class OfficeFloor implements Floor {
         return SpaceList.iterator();
     }
 
-    public ListIterator<Space> MyListIterator(int index){
+    public ListIterator<Space> myListIterator(int index){
         return SpaceList.ListIterator(index);
     }
 
@@ -111,7 +111,7 @@ public class OfficeFloor implements Floor {
         return SpaceList;
     }
 
-    public boolean Remove(int index){
+    public boolean remove(int index){
         if(index < 0 || index >= this.SpaceList.size())
             throw new FloorIndexOutOfBoundsException();
         Space tmp = SpaceList.ListIterator(index).get();

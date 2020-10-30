@@ -30,14 +30,14 @@ public class DwellingFloor implements Floor {
         return SpaceList.iterator();
     }
 
-    public ListIterator<Space> MyListIterator(int index){
+    public ListIterator<Space> myListIterator(int index){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
         return SpaceList.listIterator(index);
     }
 
-    public DwellingFloor(MyCollection<Space> SpaceList){
-        this.SpaceList = (MyArrayList<Space>) SpaceList;
+    public DwellingFloor(MyArrayList<Space> SpaceList){
+        this.SpaceList = SpaceList;
         getCalculation();
     }
 
@@ -109,7 +109,7 @@ public class DwellingFloor implements Floor {
         return SpaceList;
     }
 
-    public boolean Remove(int index){
+    public boolean remove(int index){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
         Space tmp = SpaceList.listIterator(index).next();
@@ -154,6 +154,6 @@ public class DwellingFloor implements Floor {
 
     @Override
     public int compareTo(@NotNull Floor spaces) {
-        return Integer.compare(this.countRooms, spaces.size());
+        return Integer.compare(spaces.size(), this.size());
     }
 }

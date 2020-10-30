@@ -11,7 +11,7 @@ public interface Floor extends Serializable, Cloneable, Iterable<Space>, Compara
 
     Iterator<Space> iterator();
 
-    ListIterator<Space> MyListIterator(int index);
+    ListIterator<Space> myListIterator(int index);
 
     int size();
 
@@ -27,7 +27,7 @@ public interface Floor extends Serializable, Cloneable, Iterable<Space>, Compara
 
     double getBestSpace();
 
-    boolean Remove(int index);
+    boolean remove(int index);
 
     int getCountRooms();
 

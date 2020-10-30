@@ -23,8 +23,8 @@ public class OfficeTest {
             throws CloneNotSupportedException {
         MyLinkedList<Floor> myArrayList = new MyLinkedList<>();
         start(myArrayList);
-        officeBuilding = OfficeBuilding.ofOfficeBuilding(myArrayList);
-        officeBuilding1 = OfficeBuilding.ofOfficeBuilding(myArrayList);
+        officeBuilding = new OfficeBuilding(myArrayList);
+        officeBuilding1 = new OfficeBuilding(myArrayList);
         System.out.println("Equals: " + officeBuilding.getSpaceList().equals(officeBuilding1.getSpaceList()));
         print();
     }
@@ -84,7 +84,7 @@ public class OfficeTest {
         printDate(officeBuilding);
         var newOffice = (OfficeBuilding) officeBuilding.clone();
         officeBuilding.set(1,new OfficeFloor(1));
-        Buildings.sortBuilding(officeBuilding);
+        Buildings.sortBuilding(officeBuilding, null,null);
         printDate(officeBuilding);
         System.out.println(newOffice.toString());
         printDate(newOffice);

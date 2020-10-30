@@ -16,45 +16,31 @@ import java.util.Objects;
 
 public class OfficeBuilding implements Building {
     private MyLinkedList<Floor> FloorList;
-    private static MyLinkedList<Floor> Office_LIST;
     private int countRooms = 0;
     private double square = 0.0;
 
-    public OfficeBuilding(@NotNull MyLinkedList<Integer> countFloor){
-        if(countFloor.size() == 0)
+    public OfficeBuilding(int countRooms, int[] countFloor){
+        if(countFloor.length == 0)
             throw new SpaceIndexOutOfBoundsException();
         FloorList = new MyLinkedList<>();
-        for(int i =0; i < countFloor.size(); i++){
-            FloorList.set(i, new OfficeFloor(countFloor.get(i)));
+        for(int i =0; i < countRooms; i++){
+            FloorList.add(new OfficeFloor(countFloor[i]));
         }
         getCalculation();
     }
 
-    private OfficeBuilding() {
-        if(Office_LIST == null)
-            this.FloorList = new MyLinkedList<Floor>();
-        else{
-            this.FloorList = Office_LIST;
-            Office_LIST = null;
-        }
-        getCalculation();
-    }
-
-    @NotNull
-    public static OfficeBuilding ofOfficeBuilding(MyLinkedList<Floor> FloorList) {
+    public OfficeBuilding(MyLinkedList<Floor> FloorList) {
         Objects.requireNonNull(FloorList);
-        Office_LIST = FloorList;
-        return new OfficeBuilding();
+        this.FloorList = FloorList;
+        getCalculation();
     }
 
     private void getCalculation(){
         if(FloorList == null)
             return;
-        Iterator<Floor> it = FloorList.iterator();
-        while (it.hasNext()){
-            Floor Floor = it.next();
+        for (com.buildings.property.Floor Floor : FloorList) {
             countRooms += Floor.getCountRooms();
-            square     += Floor.getSquare();
+            square += Floor.getSquare();
         }
     }
 
@@ -65,7 +51,7 @@ public class OfficeBuilding implements Building {
             if(tmp >= this.FloorList.get(i).size())
                 tmp -= this.FloorList.get(i).size();
             else
-                return this.FloorList.get(i).MyListIterator(tmp);
+                return this.FloorList.get(i).myListIterator(tmp);
         }
         return null;
     }
@@ -119,9 +105,9 @@ public class OfficeBuilding implements Building {
     public Floor set(int index, Floor Floor){
         if(index<0 || index>this.FloorList.size())
             throw new FloorIndexOutOfBoundsException();
-        RecalculateFloorDecr(FloorList.get(index).MyListIterator(0));
+        RecalculateFloorDecr(FloorList.get(index).myListIterator(0));
         FloorList.set(index,(Floor) Floor);
-        RecalculateFloorIncr(FloorList.get(index).MyListIterator(0));
+        RecalculateFloorIncr(FloorList.get(index).myListIterator(0));
         return FloorList.get(index);
     }
 

@@ -1,12 +1,14 @@
 package com.buildings.Test;
 
 import com.buildings.Container.MyArrayList;
+import com.buildings.property.*;
 import com.buildings.property.Dwelling.Dwelling;
 import com.buildings.property.Dwelling.DwellingFloor;
 import com.buildings.property.Dwelling.Flat;
-import com.buildings.property.Floor;
-import com.buildings.property.Space;
 import com.buildings.property.Algorithms.Buildings;
+import com.buildings.property.Dwelling.Hotel.Hotel;
+import com.buildings.property.Dwelling.Hotel.HotelFloor;
+
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,8 +25,8 @@ public class BuildTest {
         MyArrayList<Floor> myArrayList1 = new MyArrayList<>();
         start(myArrayList1);
         start(myArrayList);
-        dwelling = Dwelling.ofDwelling(myArrayList);
-        dwelling2 = Dwelling.ofDwelling(myArrayList1);
+        dwelling = new Dwelling(myArrayList);
+        dwelling2 = new Dwelling(myArrayList1);
         System.out.println(dwelling.equals(dwelling2));
         print();
     }
@@ -83,8 +85,10 @@ public class BuildTest {
         Buildings.writeBuilding(dwelling, new FileWriter("Building.txt"));
         Buildings.outputBuilding(dwelling, new FileOutputStream("Building.bin"));
         var copy = (Dwelling) dwelling.clone();
-        dwelling.set(0,new DwellingFloor(1));
+        dwelling.set(0, new HotelFloor(1));
+        //Buildings.sortBuilding(dwelling, new FloorSpaceComparator(), new SpaceRoomsComparator());
         printDate(dwelling);
+        //System.out.println((Hotel)dwelling.toString());
         printDate(copy);
     }
 }

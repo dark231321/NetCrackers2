@@ -12,40 +12,32 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 public class Dwelling implements Building {
-    private MyArrayList<Floor> FloorList;
-    private static MyArrayList<Floor> Space_LIST;
+    protected MyArrayList<Floor> FloorList;
     private int countRooms = 0;
     private double square = 0.0;
 
-    public Dwelling(@NotNull MyArrayList<Integer> countFloor){
-        if(countFloor.size() < 0)
+    protected Dwelling(int size){
+        FloorList = new MyArrayList<>(size);
+    }
+
+    public Dwelling(int countFloors, int[] countSpaces){
+        if(countSpaces.length == 0)
             throw new IllegalArgumentException();
-        FloorList = new MyArrayList<>(countFloor.size());
-        for(int i =0; i < countFloor.size(); i++){
-           FloorList.set(i, new DwellingFloor(countFloor.get(i)));
+        FloorList = new MyArrayList<>(countSpaces.length);
+        for(int i =0; i < countFloors; i++){
+           FloorList.set(i, new DwellingFloor(countSpaces[i]));
         }
         getCalculation();
     }
 
-    private Dwelling() {
-        if(Space_LIST == null)
-            this.FloorList = new MyArrayList<Floor>();
-        else{
-            this.FloorList = Space_LIST;
-            Space_LIST = null;
-        }
-        getCalculation();
-    }
-
-    @NotNull
-    public static Dwelling ofDwelling(MyArrayList<Floor> FloorList) {
+    public Dwelling(MyArrayList<Floor> FloorList) {
         Objects.requireNonNull(FloorList);
-        Space_LIST = FloorList;
-        return new Dwelling();
+        this.FloorList = FloorList;
+        getCalculation();
     }
+
 
     private void getCalculation(){
         Iterator<Floor> it = FloorList.iterator();
@@ -63,7 +55,7 @@ public class Dwelling implements Building {
             if(tmp >= this.FloorList.get(i).size())
                 tmp -= this.FloorList.get(i).size();
             else
-                return this.FloorList.get(i).MyListIterator(tmp);
+                return this.FloorList.get(i).myListIterator(tmp);
         }
         return null;
     }
@@ -117,9 +109,9 @@ public class Dwelling implements Building {
     public Floor set(int index,@NotNull Floor Floor){
         if(index < 0 || index >= FloorList.size())
             throw new FloorIndexOutOfBoundsException();
-        RecalculateFloorDecr(FloorList.get(index).MyListIterator(0));
+        RecalculateFloorDecr(FloorList.get(index).myListIterator(0));
         FloorList.set(index, Floor);
-        RecalculateFloorIncr(FloorList.get(index).MyListIterator(0));
+        RecalculateFloorIncr(FloorList.get(index).myListIterator(0));
         return FloorList.get(index);
     }
 

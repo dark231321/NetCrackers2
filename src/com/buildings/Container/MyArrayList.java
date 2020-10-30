@@ -16,6 +16,14 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, Cl
     private int size;
     private int capacity;
 
+    public MyArrayList(T[] objects){
+        Objects.requireNonNull(objects);
+        data = new Object[this.capacity = Math.max(objects.length * 2, this.capacity)];
+        for(T o: objects){
+            add(o);
+        }
+    }
+
     public MyArrayList(int capacity) {
         if (capacity > 0) {
             data = new Object[this.capacity = Math.max(capacity * 2, DEFAULT_CAPACITY)];
@@ -158,7 +166,6 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, Cl
         ListItr(int index) {
             super(index);
         }
-
 
         public boolean hasNext() {
             return super.hasNext();
