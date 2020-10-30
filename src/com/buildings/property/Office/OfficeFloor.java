@@ -28,8 +28,6 @@ public class OfficeFloor implements Floor {
         getCalculation();
     }
 
-    public OfficeFloor(){}
-
     @Override
     public Iterator<Space> iterator() {
         return SpaceList.iterator();
@@ -49,11 +47,9 @@ public class OfficeFloor implements Floor {
     }
 
     private void getCalculation(){
-        Iterator<Space> it = SpaceList.iterator();
-        while (it.hasNext()){
-            Space Space = it.next();
+        for (com.buildings.property.Space Space : SpaceList) {
             countRooms += Space.getCountRooms();
-            square     += Space.getSquare();
+            square += Space.getSquare();
         }
     }
 
@@ -64,7 +60,6 @@ public class OfficeFloor implements Floor {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public Object clone()
             throws CloneNotSupportedException {
         OfficeFloor clone = (OfficeFloor) super.clone();
