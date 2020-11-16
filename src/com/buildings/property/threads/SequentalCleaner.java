@@ -5,7 +5,6 @@ import com.buildings.property.Space;
 
 public class SequentalCleaner implements Runnable {
     private final Floor floor;
-
     private Semaphore semaphore;
 
     public SequentalCleaner(Floor floor, Semaphore semaphore){

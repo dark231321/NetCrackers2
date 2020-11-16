@@ -9,7 +9,7 @@ public class Semaphore {
     private boolean repaired = false;
     public int state;
 
-    public Semaphore(){
+    public Semaphore() {
         this.cleanQueue = new LinkedList<>();
         this.repairQueue = new LinkedList<>();
     }

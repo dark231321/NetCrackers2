@@ -27,6 +27,7 @@ public class OfficeFactory implements BuildingFactory {
 
     @Override
     public Floor createFloor(Space[] spaces) {
+        MyLinkedList<Floor> myLinkedList = new MyLinkedList<>(spaces);
         return new OfficeFloor(new MyLinkedList<>(spaces));
     }
 
@@ -37,6 +38,7 @@ public class OfficeFactory implements BuildingFactory {
 
     @Override
     public Building createBuilding(Floor[] floors) {
-        return new OfficeBuilding(new MyLinkedList<>(floors));
+        MyLinkedList<Floor> myLinkedList = new MyLinkedList<>(floors);
+        return new OfficeBuilding(myLinkedList);
     }
 }

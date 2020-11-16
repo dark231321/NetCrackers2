@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -141,16 +140,15 @@ public class Buildings {
                 stringBuffer.append(space.getSquare()).append(" ");
             }
         }
-        printWriter.print(stringBuffer.toString());
+        printWriter.print(stringBuffer.toString() + "\n");
+        printWriter.flush();
     }
 
     public static Building readBuilding (Reader in) {
         Building building = null;
         try {
-            BufferedReader bufferedReader = new BufferedReader(in);
-            StreamTokenizer streamTokenizer = new StreamTokenizer(bufferedReader);
+            StreamTokenizer streamTokenizer = new StreamTokenizer(new BufferedReader(in));
             if(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF){
-
                 int sizeFloors = (int) streamTokenizer.nval;
                 Floor[] floorList = new Floor[sizeFloors];
 
@@ -191,8 +189,7 @@ public class Buildings {
     
     public static Building deserializeBuilding (InputStream in){
         try {
-            ObjectInputStream objectInputStream =
-                    new ObjectInputStream(in);
+            ObjectInputStream objectInputStream = new ObjectInputStream(in);
             return (Building) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -200,14 +197,42 @@ public class Buildings {
         }
     }
 
-    public static void readBuilding(Scanner scanner){
-
+    public static Building readBuilding(Scanner scnr) {
+        int floorAmount = scnr.nextInt();
+        Floor[] bufFloor = new Floor[floorAmount];
+        for(int i = 0; i < floorAmount; ++i) {
+            int flatOnFloor = scnr.nextInt();
+            Space[] flats = new Space[flatOnFloor];
+            for(int j = 0; j < flatOnFloor; ++j) {
+                int countRooms = scnr.nextInt();
+                double area = Double.valueOf(scnr.next());
+                flats[j] = ofSpace(countRooms, area);
+            }
+            bufFloor[i] = ofFloor(flats);
+        }
+        if(scnr.hasNextLine())
+            System.out.println(scnr.nextLine());
+        return ofBuilding(bufFloor);
     }
-    
+
 
     public static void writeBuildingFormat (Building building,
-                                            Writer out) {
-
+                                            Writer out)
+            throws IOException {
+        String bufString = building.size() + " ";
+        out.write(bufString);
+        for (int i = 0; i < building.size(); i++) {
+            Floor floor = building.get(i);
+            bufString = floor.size() + " ";
+            out.append(bufString);
+            for (int j = 0; j < floor.size(); j++){
+                bufString = floor.get(j).getCountRooms() + " " + floor.get(j).getSquare() + " ";
+                if(i == building.size() - 1 &&
+                        j == floor.size() - 1)
+                    bufString = bufString.substring(0, bufString.length() - 1);
+                out.append(bufString);
+            }
+        }
     }
 
     public SynchronizedFloor synchronizedFloor(Floor floor){

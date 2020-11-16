@@ -18,11 +18,10 @@ public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Seri
     private int size;
     public MyLinkedList() { this.size = 0; }
 
-    public MyLinkedList(T[] objects){
+    public MyLinkedList(Object[] objects){
         Objects.requireNonNull(objects);
-        this.size = objects.length;
-        for(T o: objects){
-            add(o);
+        for(Object o: objects){
+            add((T)o);
         }
     }
 
