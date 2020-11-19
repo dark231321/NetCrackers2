@@ -17,7 +17,7 @@ public class BinaryServer {
                 try {
                     ServerResponse serverResponse = new ServerResponse(serverSocket.accept());
                     serverResponse.count();
-                    //serverResponse.disconnect();
+                    serverResponse.disconnect();
                 } catch (IOException io) {
                     System.out.println("Client socket connect exception: " + io);
                 }

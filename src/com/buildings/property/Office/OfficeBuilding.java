@@ -29,9 +29,8 @@ public class OfficeBuilding implements Building {
         getCalculation();
     }
 
-    public OfficeBuilding(MyLinkedList<Floor> FloorList) {
-        Objects.requireNonNull(FloorList);
-        this.FloorList = FloorList;
+    public OfficeBuilding(Floor[] floors) {
+        this.FloorList = new MyLinkedList<>(floors);
         getCalculation();
     }
 
@@ -61,6 +60,7 @@ public class OfficeBuilding implements Building {
         return FloorList.iterator();
     }
 
+    @Override
     public Space getSpace(int numberOffice){
         var it = findOffice(numberOffice);
         if (it == null)
@@ -68,6 +68,7 @@ public class OfficeBuilding implements Building {
         return it.get();
     }
 
+    @Override
     public void removeSpace(int numberOffice){
         var it = findOffice(numberOffice);
         if (it == null)
@@ -77,6 +78,7 @@ public class OfficeBuilding implements Building {
         it.remove();
     }
 
+    @Override
     public void setSpace(int numberOffice, Space Office){
         var it = findOffice(numberOffice);
         if(it == null)
@@ -102,6 +104,7 @@ public class OfficeBuilding implements Building {
         }
     }
 
+    @Override
     public Floor set(int index, Floor Floor){
         if(index<0 || index>this.FloorList.size())
             throw new FloorIndexOutOfBoundsException();
@@ -111,18 +114,23 @@ public class OfficeBuilding implements Building {
         return FloorList.get(index);
     }
 
+    @Override
     public Floor get(int index){
         if(index<0 || index>this.FloorList.size())
             throw new FloorIndexOutOfBoundsException();
         return FloorList.get(index);
     }
 
+    @Override
     public MyLinkedList<Floor> getSpaceList() { return FloorList; }
 
+    @Override
     public int size() { return FloorList.size(); }
 
+    @Override
     public int getCountRooms(){ return countRooms; }
 
+    @Override
     public int getCountSpace(){
         if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
@@ -133,6 +141,7 @@ public class OfficeBuilding implements Building {
         return tmp;
     }
 
+    @Override
     public double getBestSpace() {
         if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
@@ -144,8 +153,10 @@ public class OfficeBuilding implements Building {
         return tmp;
     }
 
+    @Override
     public double getSquare() { return square; }
 
+    @Override
     public MyLinkedList<Space> sortedSpace(){
         int countOffices = this.getCountSpace();
         MyLinkedList<Space> tmp = new MyLinkedList<>();

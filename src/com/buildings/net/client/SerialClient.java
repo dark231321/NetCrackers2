@@ -24,7 +24,7 @@ public class SerialClient {
     private static Scanner fromServer;
     private static Scanner readerBuildings;
     private static BufferedReader readerName;
-    private static ObjectOutputStream  writer = null;
+    private static ObjectOutputStream writer = null;
 
     static {
         try {
@@ -38,18 +38,13 @@ public class SerialClient {
     private static void fromServer() throws IOException {
         BufferedWriter propertyPrice = new BufferedWriter(new FileWriter("PropertyPrice.txt"));
         System.out.println("From server: ");
-        while (fromServer.hasNextLine()){
-            String property;
-            if((property = fromServer.nextLine()).equals("exit"))
-                break;
-            System.out.println(property);
-            propertyPrice.write(property + "\n");
-        }
+        String property = fromServer.nextLine();
+        System.out.println(property);
+        propertyPrice.write(property + "\n");
         propertyPrice.flush();
     }
 
-    private static void toServer() throws IOException {
-        ArrayList<Building> buildings = new ArrayList<>();
+    private static void request() throws IOException {
         Building building = null;
         String word = null;
         while (!(word = readerName.readLine()).equals("exit")) {
@@ -66,12 +61,11 @@ public class SerialClient {
                     break;
             }
             building = Buildings.readBuilding(readerBuildings);
-            buildings.add(building);
             System.out.println(building.toString());
+            writer.writeObject(building);
+            writer.flush();
+            fromServer();
         }
-        System.out.println(buildings.toString());
-        writer.writeObject(buildings);
-        writer.flush();
     }
 
     public static void main(String[] args){
@@ -79,8 +73,7 @@ public class SerialClient {
             System.out.println("Client Connected");
             writer = new ObjectOutputStream(clientSocket.getOutputStream());
             fromServer = new Scanner(clientSocket.getInputStream());
-            toServer();
-            fromServer();
+            request();
         } catch (IOException e){
             System.out.println("Client exception: " + e);
         }

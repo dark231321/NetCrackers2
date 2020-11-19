@@ -9,20 +9,24 @@ public class Flat implements Space {
     private double square;
     private int countRooms;
 
+    @Override
     public double getSquare() {
         return square;
     }
 
+    @Override
     public void setSquare(double square) {
         if(square <= 0)
             throw new InvalidSpaceAreaException();
         this.square = square;
     }
 
+    @Override
     public int getCountRooms() {
         return countRooms;
     }
 
+    @Override
     public void setCountRooms(int countRooms) {
         if(countRooms <= 0)
             throw new InvalidRoomsCountException();

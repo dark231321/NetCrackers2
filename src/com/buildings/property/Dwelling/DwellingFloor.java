@@ -30,30 +30,31 @@ public class DwellingFloor implements Floor {
         return SpaceList.iterator();
     }
 
+    @Override
     public ListIterator<Space> myListIterator(int index){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
         return SpaceList.listIterator(index);
     }
 
-    public DwellingFloor(MyArrayList<Space> SpaceList){
-        this.SpaceList = SpaceList;
+    public DwellingFloor(Space[] spaces){
+        this.SpaceList = new MyArrayList<>(spaces);
         getCalculation();
     }
 
+    @Override
     public int size() {
         return this.SpaceList.size();
     }
 
     private void getCalculation(){
-        Iterator<Space> it = SpaceList.iterator();
-        while (it.hasNext()){
-            Space Space = it.next();
+        for (com.buildings.property.Space Space : SpaceList) {
             countRooms += Space.getCountRooms();
-            square     += Space.getSquare();
+            square += Space.getSquare();
         }
     }
 
+    @Override
     public int getCountRooms() {
         if(countRooms < 0)
             throw new SpaceIndexOutOfBoundsException();
@@ -73,19 +74,21 @@ public class DwellingFloor implements Floor {
         return clone;
     }
 
-
+    @Override
     public double getSquare(){
         if(countRooms < 0)
             throw new InvalidSpaceAreaException();
         return square;
     }
 
+    @Override
     public Space get(int index) {
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
         return SpaceList.get(index);
     }
 
+    @Override
     public Space set(int index, @NotNull Space Space){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
@@ -96,6 +99,7 @@ public class DwellingFloor implements Floor {
         return (Space) Space;
     }
 
+    @Override
     public Space setRooms(int index, int newCountRooms) {
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
@@ -104,11 +108,12 @@ public class DwellingFloor implements Floor {
         return SpaceList.get(index);
     }
 
-
+    @Override
     public MyArrayList<Space> getSpaceList() {
         return SpaceList;
     }
 
+    @Override
     public boolean remove(int index){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
@@ -118,6 +123,7 @@ public class DwellingFloor implements Floor {
         return SpaceList.remove(index);
     }
 
+    @Override
     public double getBestSpace(){
         Iterator<Space> it = SpaceList.iterator();
         double tmp = 0;

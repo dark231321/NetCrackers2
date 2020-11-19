@@ -13,7 +13,7 @@ public class Hotel extends Dwelling {
         }
     }
 
-    public Hotel(MyArrayList<Floor> floors){
+    public Hotel(Floor[] floors){
         super(floors);
     }
 

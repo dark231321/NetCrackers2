@@ -29,7 +29,7 @@ public class BinaryServer {
                     System.out.println("Client socket connect exception: " + io);
                 }
             }
-        }catch (IOException io){
+        } catch (IOException io) {
             throw new RuntimeException();
         }
     }

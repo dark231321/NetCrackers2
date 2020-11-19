@@ -14,7 +14,6 @@ public class Semaphore {
         this.repairQueue = new LinkedList<>();
     }
 
-
     public void beginRepair(){
         Object object = new Object();
         synchronized (object){

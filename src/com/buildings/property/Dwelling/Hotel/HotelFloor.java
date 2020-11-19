@@ -31,8 +31,8 @@ public class HotelFloor extends DwellingFloor {
         this.countStars = defaultCountStars;
     }
 
-    public HotelFloor(MyArrayList<Space> SpaceList) {
-        super(SpaceList);
+    public HotelFloor(Space[] spaces) {
+        super(spaces);
         this.countStars = defaultCountStars;
     }
 

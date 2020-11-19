@@ -1,7 +1,5 @@
 package com.buildings.property.Factorys;
 
-import com.buildings.Container.AbstractArray;
-import com.buildings.Container.MyLinkedList;
 import com.buildings.property.Building;
 import com.buildings.property.Floor;
 import com.buildings.property.Office.Office;
@@ -26,19 +24,11 @@ public class OfficeFactory implements BuildingFactory {
     }
 
     @Override
-    public Floor createFloor(Space[] spaces) {
-        MyLinkedList<Floor> myLinkedList = new MyLinkedList<>(spaces);
-        return new OfficeFloor(new MyLinkedList<>(spaces));
-    }
+    public Floor createFloor(Space[] spaces) { return new OfficeFloor(spaces); }
 
     @Override
-    public Building createBuilding(int floorsCount, int[] spacesCounts) {
-        return new OfficeBuilding(floorsCount, spacesCounts);
-    }
+    public Building createBuilding(int floorsCount, int[] spacesCounts) { return new OfficeBuilding(floorsCount, spacesCounts); }
 
     @Override
-    public Building createBuilding(Floor[] floors) {
-        MyLinkedList<Floor> myLinkedList = new MyLinkedList<>(floors);
-        return new OfficeBuilding(myLinkedList);
-    }
+    public Building createBuilding(Floor[] floors) { return new OfficeBuilding(floors); }
 }

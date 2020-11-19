@@ -1,7 +1,5 @@
 package com.buildings.property.Factorys;
 
-import com.buildings.Container.AbstractArray;
-import com.buildings.Container.MyArrayList;
 import com.buildings.property.Building;
 import com.buildings.property.Dwelling.Dwelling;
 import com.buildings.property.Dwelling.DwellingFloor;
@@ -26,9 +24,7 @@ public class DwellingFactory implements BuildingFactory {
     }
 
     @Override
-    public Floor createFloor(Space[] spaces) {
-        return new DwellingFloor(new MyArrayList<>(spaces));
-    }
+    public Floor createFloor(Space[] spaces) { return new DwellingFloor(spaces); }
 
     @Override
     public Building createBuilding(int floorsCount, int[] spacesCounts) {
@@ -36,7 +32,5 @@ public class DwellingFactory implements BuildingFactory {
     }
 
     @Override
-    public Building createBuilding(Floor[] floors) {
-        return new Dwelling(new MyArrayList<> (floors));
-    }
+    public Building createBuilding(Floor[] floors) { return new Dwelling(floors); }
 }

@@ -52,14 +52,13 @@ public class ServerResponse extends AbstractResponse {
                 }
                 checkArrest();
                 System.out.println(building.toString());
-                this.writer.write(price + "$\r\n");
-
+                this.writer.write(price + "$\n");
+                this.writer.flush();
             } catch (BuildingUnderArrestException io) {
                 System.out.println("Building Under Arrest");
                 this.writer.write("Building Under Arrest\n");
+                this.writer.flush();
             }
         }
-        this.writer.write("exit\n");
-        this.writer.flush();
     }
 }

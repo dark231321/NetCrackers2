@@ -20,6 +20,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.StreamTokenizer;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.Scanner;
@@ -28,13 +29,9 @@ public class Buildings {
 
     private static BuildingFactory abstractFactory = new DwellingFactory();
 
-    public static Building ofBuilding(int countFloors, int[] sizeFloors){
-        return abstractFactory.createBuilding(countFloors, sizeFloors);
-    }
+    public static Building ofBuilding(int countFloors, int[] sizeFloors){ return abstractFactory.createBuilding(countFloors, sizeFloors); }
 
-    public static Building ofBuilding(Floor[] floors){
-        return abstractFactory.createBuilding(floors);
-    }
+    public static Building ofBuilding(Floor[] floors){ return abstractFactory.createBuilding(floors); }
 
     public static Floor ofFloor(Space[] spaces){
         return abstractFactory.createFloor(spaces);
@@ -50,6 +47,60 @@ public class Buildings {
 
     public static Space ofSpace(double area){
         return abstractFactory.createSpace(area);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Building ofBuilding(int countFloors, int[] sizeFloors, Class buildingClass) {
+        try {
+            return (Building) buildingClass.getConstructor(int.class, int[].class).newInstance(countFloors, sizeFloors);
+        }catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Building ofBuilding(Floor[] floors, Class buildingClass){
+        try {
+            return (Building) buildingClass.getConstructor(Floor[].class).newInstance((Object) floors);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Floor ofFloor(Space[] spaces, Class floorClass){
+        try {
+            return (Floor) floorClass.getConstructor(Space[].class).newInstance((Object) spaces);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Floor ofFloor(int spaceCount, Class floorClass) {
+        try {
+            return (Floor) floorClass.getConstructor(int.class).newInstance(spaceCount);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Space ofSpace(int roomsCount, double area, Class spaceClass) {
+        try {
+            return (Space) spaceClass.getConstructor(int.class, double.class).newInstance(roomsCount, area);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Space ofSpace(double area, Class spaceClass) {
+        try {
+            return (Space) spaceClass.getConstructor(double.class).newInstance(area);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void setAbstractFactory(BuildingFactory dwellingFactory) {
@@ -69,7 +120,6 @@ public class Buildings {
     public static void sortBuilding(Building building,
                                     @Nullable Comparator<? super Floor> floorComparator,
                                     @Nullable Comparator<? super Space> spaceComparator){
-        Objects.requireNonNull(building);
         sortFloors(building, floorComparator);
         for (Floor floor:
              building) {
@@ -98,6 +148,34 @@ public class Buildings {
             }
             building = abstractFactory.createBuilding(floorList);
         }catch (IOException o){
+            System.out.println("Error");
+        }
+        return building;
+    }
+
+
+    public static Building inputBuilding (InputStream in, Class<Building> buildingClass,
+                                          Class<Floor> floorClass, Class<Space> spaceClass)
+            throws IOException{
+        Building building = null;
+        try {
+            DataInputStream dataInputStream = new DataInputStream(in);
+
+            int floorSize = dataInputStream.readInt();
+            Floor[] floorList = new Floor[floorSize];
+            for (int i = 0 ; i < floorSize; i++){
+                int spaceSize =  dataInputStream.readInt();
+                Space[] SpaceList = new Space[spaceSize];
+                for(int j = 0; j < spaceSize; j++){
+                    //SpaceList[j] = (Space) abstractFactory.createSpace(dataInputStream.readInt(), dataInputStream.readDouble());
+                    SpaceList[j] = spaceClass.getConstructor(int.class, double.class).
+                            newInstance(dataInputStream.readInt(), dataInputStream.readDouble());
+                }
+                //floorList[i] = abstractFactory.createFloor(SpaceList);
+                floorList[i] = floorClass.getConstructor(Space[].class).newInstance((Object) SpaceList);
+            }
+            building = abstractFactory.createBuilding(floorList);
+        }catch (IOException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException o) {
             System.out.println("Error");
         }
         return building;
@@ -205,7 +283,7 @@ public class Buildings {
             Space[] flats = new Space[flatOnFloor];
             for(int j = 0; j < flatOnFloor; ++j) {
                 int countRooms = scnr.nextInt();
-                double area = Double.valueOf(scnr.next());
+                double area = Double.parseDouble(scnr.next());
                 flats[j] = ofSpace(countRooms, area);
             }
             bufFloor[i] = ofFloor(flats);

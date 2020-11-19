@@ -4,7 +4,7 @@ import com.buildings.property.Floor;
 import com.buildings.property.Space;
 
 public class Repairer implements Runnable {
-    private Floor floor;
+    private final Floor floor;
 
     public Repairer(Floor floor){
         this.floor = floor;

@@ -28,7 +28,16 @@ public class BinaryClient {
         }
     }
 
-    private static void toServer() throws IOException {
+    private static void fromServer() throws IOException {
+        BufferedWriter propertyPrice = new BufferedWriter(new FileWriter("PropertyPrice.txt"));
+        System.out.println("From server: ");
+        String property = fromServer.nextLine();
+        System.out.println(property);
+        propertyPrice.write(property + "\n");
+        propertyPrice.flush();
+    }
+
+    private static void request() throws IOException{
         Building building = null;
         String word = null;
         while (!(word = readerName.readLine()).equals("exit")) {
@@ -51,23 +60,12 @@ public class BinaryClient {
             System.out.println(building.toString());
             Buildings.writeBuildingFormat(building, writer);
             writer.write("\n");
+            writer.flush();
+            fromServer();
         }
         System.out.println("exit");
         writer.write("exit"+"\n");
         writer.flush();
-    }
-
-    private static void fromServer() throws IOException {
-        BufferedWriter propertyPrice = new BufferedWriter(new FileWriter("PropertyPrice.txt"));
-        System.out.println("From server: ");
-        while (fromServer.hasNextLine()){
-            String property;
-            if((property = fromServer.nextLine()).equals("exit"))
-                break;
-            System.out.println(property);
-            propertyPrice.write(property + "\n");
-        }
-        propertyPrice.flush();
     }
 
     public static void main(String[] args){
@@ -75,8 +73,7 @@ public class BinaryClient {
             System.out.println("Client Connected");
             writer = new PrintWriter(clientSocket.getOutputStream());
             fromServer = new Scanner(clientSocket.getInputStream());
-            toServer();
-            fromServer();
+            request();
         } catch (IOException e){
             System.out.println("Client exception: " + e);
         }

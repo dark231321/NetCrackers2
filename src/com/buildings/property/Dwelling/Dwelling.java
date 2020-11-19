@@ -32,9 +32,8 @@ public class Dwelling implements Building {
         getCalculation();
     }
 
-    public Dwelling(MyArrayList<Floor> FloorList) {
-        Objects.requireNonNull(FloorList);
-        this.FloorList = FloorList;
+    public Dwelling(Floor[] floors) {
+        this.FloorList = new MyArrayList<>(floors);
         getCalculation();
     }
 
@@ -65,6 +64,7 @@ public class Dwelling implements Building {
         return FloorList.iterator();
     }
 
+    @Override
     public Space getSpace(int numberSpace){
         var it = findSpace(numberSpace);
         if (it == null)
@@ -72,6 +72,7 @@ public class Dwelling implements Building {
         return it.get();
     }
 
+    @Override
     public void removeSpace(int numberSpace){
         var it = findSpace(numberSpace);
         if (it == null)
@@ -81,6 +82,7 @@ public class Dwelling implements Building {
         it.remove();
     }
 
+    @Override
     public void setSpace(int numberSpace, @NotNull Space Space){
         var it = findSpace(numberSpace);
         if(it == null)
@@ -106,6 +108,7 @@ public class Dwelling implements Building {
         }
     }
 
+    @Override
     public Floor set(int index,@NotNull Floor Floor){
         if(index < 0 || index >= FloorList.size())
             throw new FloorIndexOutOfBoundsException();
@@ -115,18 +118,23 @@ public class Dwelling implements Building {
         return FloorList.get(index);
     }
 
+    @Override
     public Floor get(int index){
         if(index < 0 || index >= FloorList.size())
             throw new FloorIndexOutOfBoundsException();
         return FloorList.get(index);
     }
 
+    @Override
     public MyArrayList<Floor> getSpaceList() { return FloorList; }
 
+    @Override
     public int size() { return FloorList.size(); }
 
+    @Override
     public int getCountRooms(){ return countRooms; }
 
+    @Override
     public int getCountSpace(){
         if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
@@ -137,6 +145,7 @@ public class Dwelling implements Building {
         return tmp;
     }
 
+    @Override
     public double getBestSpace() {
         if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
@@ -148,8 +157,10 @@ public class Dwelling implements Building {
         return tmp;
     }
 
+    @Override
     public double getSquare() { return square; }
 
+    @Override
     public MyArrayList<Space> sortedSpace(){
         int countSpaces = this.getCountSpace();
         MyArrayList<Space> tmp = new MyArrayList<>();

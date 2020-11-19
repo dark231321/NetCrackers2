@@ -8,7 +8,6 @@ import com.buildings.property.Office.Office;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class SerialServerResponse extends AbstractResponse {
 
@@ -24,21 +23,19 @@ public class SerialServerResponse extends AbstractResponse {
     @Override
     public void count() throws IOException {
         try {
-            ArrayList<Building> buildings = (ArrayList<Building>) reader.readObject();
-            for (Building building: buildings) {
-                try{
-                    System.out.println(building);
-                    checkArrest();
-                    if(building instanceof Office)
-                        writer.write(building.getCountSpace()* 1500 + "$\n");
-                    else if(building instanceof Hotel)
-                        writer.write(building.getCountSpace()* 2000 + "$\n");
-                    else if(building instanceof Dwelling)
-                        writer.write(building.getCountSpace()* 1000 + "$\n");
-                } catch (BuildingUnderArrestException ex) {
-                    System.out.println("Building under arrest");
-                    writer.write("Building under arrest\n");
-                }
+            Building building = (Building) reader.readObject();
+            try{
+                System.out.println(building);
+                checkArrest();
+                if(building instanceof Office)
+                    writer.write(building.getCountSpace()* 1500 + "$\n");
+                else if(building instanceof Hotel)
+                    writer.write(building.getCountSpace()* 2000 + "$\n");
+                else if(building instanceof Dwelling)
+                    writer.write(building.getCountSpace()* 1000 + "$\n");
+            } catch (BuildingUnderArrestException ex) {
+                System.out.println("Building under arrest");
+                writer.write("Building under arrest\n");
             }
             writer.flush();
         }catch (ClassNotFoundException e){
