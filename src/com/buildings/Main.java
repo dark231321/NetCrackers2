@@ -26,7 +26,6 @@ public class Main {
     public static void main(String[] args)
             throws IOException, CloneNotSupportedException, InterruptedException, InvocationTargetException,
             NoSuchMethodException, InstantiationException, IllegalAccessException {
-
         //BuildingFactory officeFactory = new OfficeFactory();
         //BuildingFactory dwellingFactory = new DwellingFactory();
         //BuildingFactory hotelFactory = new HotelFactory();

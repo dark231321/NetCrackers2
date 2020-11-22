@@ -22,7 +22,6 @@ import java.io.StreamTokenizer;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Buildings {
@@ -160,23 +159,20 @@ public class Buildings {
         Building building = null;
         try {
             DataInputStream dataInputStream = new DataInputStream(in);
-
             int floorSize = dataInputStream.readInt();
             Floor[] floorList = new Floor[floorSize];
             for (int i = 0 ; i < floorSize; i++){
                 int spaceSize =  dataInputStream.readInt();
                 Space[] SpaceList = new Space[spaceSize];
-                for(int j = 0; j < spaceSize; j++){
-                    //SpaceList[j] = (Space) abstractFactory.createSpace(dataInputStream.readInt(), dataInputStream.readDouble());
+                for(int j = 0; j < spaceSize; j++)
                     SpaceList[j] = spaceClass.getConstructor(int.class, double.class).
                             newInstance(dataInputStream.readInt(), dataInputStream.readDouble());
-                }
-                //floorList[i] = abstractFactory.createFloor(SpaceList);
                 floorList[i] = floorClass.getConstructor(Space[].class).newInstance((Object) SpaceList);
             }
-            building = abstractFactory.createBuilding(floorList);
+            building = buildingClass.getConstructor(Floor[].class).newInstance((Object) floorList);
         }catch (IOException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException o) {
             System.out.println("Error");
+            throw new IllegalArgumentException();
         }
         return building;
     }
@@ -222,6 +218,40 @@ public class Buildings {
         printWriter.flush();
     }
 
+    public static Building readBuilding (Reader in, Class<Building> buildingClass,
+                                         Class<Floor> floorClass, Class<Space> spaceClass) {
+        Building building = null;
+        try {
+            StreamTokenizer streamTokenizer = new StreamTokenizer(new BufferedReader(in));
+            if(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF){
+                int sizeFloors = (int) streamTokenizer.nval;
+                Floor[] floorList = new Floor[sizeFloors];
+
+                for (int i = 0; i < sizeFloors; i++){
+                    if (streamTokenizer.nextToken() != StreamTokenizer.TT_EOF) {
+
+                        int sizeSpaces = (int) streamTokenizer.nval;
+                        Space[] SpaceList = new Space[sizeSpaces];
+                        for (int j = 0; j < sizeSpaces; j++){
+                            double square = 0;
+                            int countRooms = 0;
+                            if(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF) countRooms = (int) streamTokenizer.nval;
+                            if(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF) square = streamTokenizer.nval;
+                            SpaceList[j] = spaceClass.getConstructor(int.class, double.class).newInstance(countRooms, square);
+                        }
+                        floorList[i] = floorClass.getConstructor(Space[].class).newInstance((Object) SpaceList);
+                    }
+                }
+                building = buildingClass.getConstructor(Floor[].class).newInstance((Object) floorList);
+            }
+        }
+        catch(IOException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            System.out.println("Some error occurred!");
+            throw new IllegalArgumentException();
+        }
+        return building;
+    }
+
     public static Building readBuilding (Reader in) {
         Building building = null;
         try {
@@ -250,6 +280,7 @@ public class Buildings {
         }
         catch(IOException e) {
             System.out.println("Some error occurred!");
+            throw new IllegalArgumentException();
         }
         return building;
     }
@@ -291,6 +322,31 @@ public class Buildings {
         if(scnr.hasNextLine())
             System.out.println(scnr.nextLine());
         return ofBuilding(bufFloor);
+    }
+
+    public static Building readBuilding(Scanner scnr,Class<Building> buildingClass,
+                                        Class<Floor> floorClass, Class<Space> spaceClass) {
+        Building building = null;
+        try {
+            int floorAmount = scnr.nextInt();
+            Floor[] buffFloor = new Floor[floorAmount];
+            for(int i = 0; i < floorAmount; ++i) {
+                int flatOnFloor = scnr.nextInt();
+                Space[] flats = new Space[flatOnFloor];
+                for(int j = 0; j < flatOnFloor; ++j) {
+                    int countRooms = scnr.nextInt();
+                    double area = Double.parseDouble(scnr.next());
+                    flats[j] = spaceClass.getConstructor(int.class, double.class).newInstance(countRooms, area);
+                }
+                buffFloor[i] = floorClass.getConstructor(Space[].class).newInstance((Object) flats);
+            }
+            if(scnr.hasNextLine())
+                System.out.println(scnr.nextLine());
+            return ofBuilding(buffFloor);
+        }catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException i){
+            System.out.println("Error");
+            throw new IllegalArgumentException();
+        }
     }
 
 
