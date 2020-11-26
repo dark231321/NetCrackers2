@@ -17,8 +17,10 @@ public class SerialServer {
                     SerialServerResponse serverResponse = new SerialServerResponse(serverSocket.accept());
                     serverResponse.count();
                     serverResponse.disconnect();
-                } catch (IOException io) {
+                } catch (IOException | ClassNotFoundException io) {
                     System.out.println("Client socket connect exception: " + io);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         } catch (IOException io){

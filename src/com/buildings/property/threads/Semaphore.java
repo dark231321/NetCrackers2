@@ -1,30 +1,31 @@
 package com.buildings.property.threads;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Semaphore {
-    private Queue<Object> cleanQueue;
-    private Queue<Object> repairQueue;
-    private boolean repaired = false;
-    public int state;
+    private final BlockingQueue<Object> cleanQueue;
+    private final BlockingQueue<Object> repairQueue;
+    private final AtomicBoolean repaired = new AtomicBoolean(false);
+    private final AtomicInteger state = new AtomicInteger(0);
 
     public Semaphore() {
-        this.cleanQueue = new LinkedList<>();
-        this.repairQueue = new LinkedList<>();
+        this.cleanQueue = new LinkedBlockingQueue<>();
+        this.repairQueue = new LinkedBlockingQueue<>();
     }
 
     public void beginRepair(){
         Object object = new Object();
         synchronized (object){
             try {
-                if(repaired || state > 0){
+                if(repaired.get() || state.get() != 0) {
                     this.repairQueue.add(object);
                     object.wait();
-                }
-                else{
-                    state++;
-                    repaired = !repaired;
+                } else {
+                    state.incrementAndGet();
+                    repaired.set(true);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -32,16 +33,16 @@ public class Semaphore {
         }
     }
 
-    public void beginClean() {
+    public void beginClean() throws InterruptedException {
         Object object = new Object();
         synchronized (object) {
             try {
-                if (!repaired || state > 0) {
+                if (!repaired.get() || state.get() != 0) {
                     this.cleanQueue.add(object);
                     object.wait();
                 } else {
-                    state++;
-                    repaired = !repaired;
+                    state.incrementAndGet();
+                    repaired.set(false);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -51,20 +52,22 @@ public class Semaphore {
 
     public void endClean(){
         Object object = this.repairQueue.poll();
-        state--;
+        state.decrementAndGet();
         if (null == object)
             return;
         synchronized (object){
+            state.incrementAndGet();
             object.notify();
         }
     }
 
     public void endRepair(){
         Object object = this.cleanQueue.poll();
-        state--;
+        state.decrementAndGet();
         if (null == object)
             return;
         synchronized (object){
+            state.incrementAndGet();
             object.notify();
         }
     }

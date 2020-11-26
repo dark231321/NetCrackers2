@@ -1,15 +1,8 @@
 package com.buildings.Container;
 import com.buildings.Container.Alghorithms.ArraysMethods;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Serializable {
 
@@ -72,7 +65,7 @@ public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Seri
         remove(it.getNode());
         return true;
     }
-    @NotNull
+
     @Override
     public Iterator<T> iterator() { return new LnkItr(); }
 
@@ -92,8 +85,6 @@ public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Seri
         }
     }
 
-    @Nullable
-    @Contract(pure = true)
     private MyLinkedList.Node<T> search(T element){
         for(var it = new MyLinkedList<T>.LnkItr(); it.hasNext(); it.next()){
             if(Objects.equals(element, it.get()))
@@ -116,7 +107,6 @@ public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Seri
         return search(element) != null;
     }
 
-    @NotNull
     private MyLinkedList.Node<T> addAfter(MyLinkedList.Node<T> element, T value){
         if(element == first) {
             addFirst(value);
@@ -135,11 +125,10 @@ public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Seri
         return tmp;
     }
 
-    @SuppressWarnings("unchecked")
-    public T[] toArray(){
+    public Object[] toArray(){
         var it = new LnkItr();
         int size = this.size();
-        T[] tmp = (T[]) new Object[this.size()];
+        Object[] tmp =  new Object[this.size()];
         for(int i = 0; i< size; i++){
             tmp[i] = it.next();
         }
@@ -148,7 +137,7 @@ public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Seri
 
     @Override
     public String toString() {
-        T[] tmp = toArray();
+        Object[] tmp = toArray();
         return ArraysMethods.toString(tmp,0, tmp.length - 1);
     }
 
@@ -233,7 +222,7 @@ public class MyLinkedList<T> extends AbstractArray<T> implements Cloneable, Seri
 
     @SuppressWarnings("unchecked")
     public void sort(Comparator<? super T> pred){
-        T[] tmp = toArray();
+        T[] tmp = (T[])toArray();
         ArraysMethods.sort(tmp,0, size-1, pred);
         this.clear();
         for(int i = 0; i< tmp.length; i++){

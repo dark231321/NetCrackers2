@@ -1,12 +1,12 @@
 package com.buildings.property.Dwelling;
 
-import com.buildings.Container.*;
-import com.buildings.property.Exceptions.FloorIndexOutOfBoundsException;
-import com.buildings.property.Exceptions.InvalidSpaceAreaException;
-import com.buildings.property.Exceptions.SpaceIndexOutOfBoundsException;
+import com.buildings.Container.ListIterator;
+import com.buildings.Container.MyArrayList;
+import com.buildings.property.util.Exceptions.FloorIndexOutOfBoundsException;
+import com.buildings.property.util.Exceptions.InvalidSpaceAreaException;
+import com.buildings.property.util.Exceptions.SpaceIndexOutOfBoundsException;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
@@ -37,7 +37,7 @@ public class DwellingFloor implements Floor {
         return SpaceList.listIterator(index);
     }
 
-    public DwellingFloor(Space[] spaces){
+    public DwellingFloor(Space... spaces){
         this.SpaceList = new MyArrayList<>(spaces);
         getCalculation();
     }
@@ -62,13 +62,11 @@ public class DwellingFloor implements Floor {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public Object clone()
             throws CloneNotSupportedException {
         DwellingFloor clone = (DwellingFloor)super.clone();
         clone.SpaceList = new MyArrayList<>();
-        for (Space space:
-            this.SpaceList){
+        for (Space space: this.SpaceList){
             clone.SpaceList.add((Space)space.clone());
         }
         return clone;
@@ -89,14 +87,14 @@ public class DwellingFloor implements Floor {
     }
 
     @Override
-    public Space set(int index, @NotNull Space Space){
+    public Space set(int index, Space Space){
         if(index < 0 || index >= this.SpaceList.size())
             throw new SpaceIndexOutOfBoundsException();
         Space tmp = SpaceList.listIterator(index).next();
         this.countRooms += Space.getCountRooms()  - tmp.getCountRooms();
         this.square += Space.getSquare() - tmp.getSquare();
-        SpaceList.set(index,(Space) Space);
-        return (Space) Space;
+        SpaceList.set(index, Space);
+        return Space;
     }
 
     @Override
@@ -159,7 +157,7 @@ public class DwellingFloor implements Floor {
     }
 
     @Override
-    public int compareTo(@NotNull Floor spaces) {
+    public int compareTo(Floor spaces) {
         return Integer.compare(spaces.size(), this.size());
     }
 }

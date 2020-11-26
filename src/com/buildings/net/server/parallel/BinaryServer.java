@@ -21,7 +21,7 @@ public class BinaryServer {
                             ServerResponse serverResponse = new ServerResponse(socket);
                             serverResponse.count();
                             serverResponse.disconnect();
-                        } catch (IOException io) {
+                        } catch (IOException | InterruptedException io) {
                             io.printStackTrace();
                         }
                     }).start();

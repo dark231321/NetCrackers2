@@ -4,12 +4,11 @@ import com.buildings.Container.AbstractArray;
 import com.buildings.Container.ListIterator;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
 public class SynchronizedFloor implements Floor {
-    private Floor floor;
+    private final Floor floor;
 
     public SynchronizedFloor(Floor floor){
         this.floor = floor;
@@ -21,9 +20,7 @@ public class SynchronizedFloor implements Floor {
     }
 
     @Override
-    public synchronized ListIterator<Space> myListIterator(int index) {
-        return this.myListIterator(index);
-    }
+    public synchronized ListIterator<Space> myListIterator(int index) { return this.floor.myListIterator(index); }
 
     @Override
     public synchronized int size() {
@@ -76,7 +73,7 @@ public class SynchronizedFloor implements Floor {
     }
 
     @Override
-    public synchronized int compareTo(@NotNull Floor floor) {
+    public synchronized int compareTo(Floor floor) {
         return this.floor.compareTo(floor);
     }
 }

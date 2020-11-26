@@ -1,7 +1,5 @@
 package com.buildings.Container.Alghorithms;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import java.util.Comparator;
 
 public class ArraysMethods {
@@ -16,7 +14,7 @@ public class ArraysMethods {
             throw new IllegalArgumentException("length(" + fromIndex + ") " +" < 0");
     }
 
-    public static <T> void sort(@NotNull T[] a, int fromIndex, int toIndex, Comparator<? super T> c) {
+    public static <T> void sort(T[] a, int fromIndex, int toIndex, Comparator<? super T> c) {
         RangeCheck(a.length, fromIndex, toIndex);
         if(c == null){
             mergeSort(a,fromIndex, toIndex);
@@ -101,7 +99,7 @@ public class ArraysMethods {
 
     }
 
-    @NotNull public static String toString(@Nullable Object[] array, int low, int high){
+    public static String toString(Object[] array, int low, int high){
         if(array == null)
             return "Null";
         if(array.length == 0)

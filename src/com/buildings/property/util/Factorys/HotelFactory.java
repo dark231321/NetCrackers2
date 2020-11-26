@@ -1,4 +1,4 @@
-package com.buildings.property.Factorys;
+package com.buildings.property.util.Factorys;
 
 import com.buildings.property.Building;
 import com.buildings.property.Dwelling.Hotel.Hotel;
@@ -13,13 +13,11 @@ public class HotelFactory extends DwellingFactory {
     }
 
     @Override
-    public Floor createFloor(Space[] spaces) { return new HotelFloor(spaces); }
+    public Floor createFloor(Space... spaces) { return new HotelFloor(spaces); }
 
     @Override
-    public Building createBuilding(int floorsCount, int[] spacesCounts) {
-        return new Hotel(floorsCount, spacesCounts);
-    }
+    public Building createBuilding(int floorsCount, int... spacesCounts) { return new Hotel(floorsCount, spacesCounts); }
 
     @Override
-    public Building createBuilding(Floor[] floors) { return new Hotel(floors); }
+    public Building createBuilding(Floor... floors) { return new Hotel(floors); }
 }

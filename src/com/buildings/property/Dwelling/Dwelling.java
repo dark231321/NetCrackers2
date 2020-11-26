@@ -1,17 +1,15 @@
 package com.buildings.property.Dwelling;
 
-import com.buildings.Container.*;
-import com.buildings.property.Exceptions.FloorIndexOutOfBoundsException;
-import com.buildings.property.Exceptions.SpaceIndexOutOfBoundsException;
+import com.buildings.Container.ListIterator;
+import com.buildings.Container.MyArrayList;
 import com.buildings.property.Building;
+import com.buildings.property.util.Exceptions.FloorIndexOutOfBoundsException;
+import com.buildings.property.util.Exceptions.SpaceIndexOutOfBoundsException;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Objects;
 
 public class Dwelling implements Building {
     protected MyArrayList<Floor> FloorList;
@@ -22,7 +20,7 @@ public class Dwelling implements Building {
         FloorList = new MyArrayList<>(size);
     }
 
-    public Dwelling(int countFloors, int[] countSpaces){
+    public Dwelling(int countFloors, int... countSpaces){
         if(countSpaces.length == 0)
             throw new IllegalArgumentException();
         FloorList = new MyArrayList<>(countSpaces.length);
@@ -32,7 +30,7 @@ public class Dwelling implements Building {
         getCalculation();
     }
 
-    public Dwelling(Floor[] floors) {
+    public Dwelling(Floor... floors) {
         this.FloorList = new MyArrayList<>(floors);
         getCalculation();
     }
@@ -47,14 +45,13 @@ public class Dwelling implements Building {
         }
     }
 
-    @Nullable
     private ListIterator<Space> findSpace(int numberSpace){
         int tmp = numberSpace;
-        for(int i = 0; i < this.FloorList.size(); i++){
-            if(tmp >= this.FloorList.get(i).size())
-                tmp -= this.FloorList.get(i).size();
+        for(var it: this.FloorList){
+            if(tmp > it.size())
+                tmp -= it.size();
             else
-                return this.FloorList.get(i).myListIterator(tmp);
+                return it.myListIterator(tmp);
         }
         return null;
     }
@@ -83,7 +80,7 @@ public class Dwelling implements Building {
     }
 
     @Override
-    public void setSpace(int numberSpace, @NotNull Space Space){
+    public void setSpace(int numberSpace, Space Space){
         var it = findSpace(numberSpace);
         if(it == null)
             throw new SpaceIndexOutOfBoundsException();
@@ -92,29 +89,27 @@ public class Dwelling implements Building {
         it.set(Space);
     }
 
-    private void RecalculateFloorDecr(@NotNull ListIterator<? extends Space> iterator){
-        while (iterator.hasNext()){
-            Space oldSpace = iterator.next();
-            this.square -= oldSpace.getSquare();
-            this.countRooms -= oldSpace.getCountRooms();
+    private void RecalculateFloorDecr(Floor floor){
+        for (var it: floor){
+            this.square -= it.getSquare();
+            this.countRooms -= it.getCountRooms();
         }
     }
 
-    private void RecalculateFloorIncr(@NotNull ListIterator<? extends Space> iterator){
-        while (iterator.hasNext()){
-            Space oldSpace = iterator.next();
-            this.square += oldSpace.getSquare();
-            this.countRooms += oldSpace.getCountRooms();
+    private void RecalculateFloorIncr(Floor floor){
+        for (var it: floor){
+            this.square += it.getSquare();
+            this.countRooms += it.getCountRooms();
         }
     }
 
     @Override
-    public Floor set(int index,@NotNull Floor Floor){
+    public Floor set(int index, Floor Floor){
         if(index < 0 || index >= FloorList.size())
             throw new FloorIndexOutOfBoundsException();
-        RecalculateFloorDecr(FloorList.get(index).myListIterator(0));
+        RecalculateFloorDecr(FloorList.get(index));
         FloorList.set(index, Floor);
-        RecalculateFloorIncr(FloorList.get(index).myListIterator(0));
+        RecalculateFloorIncr(FloorList.get(index));
         return FloorList.get(index);
     }
 
@@ -126,7 +121,7 @@ public class Dwelling implements Building {
     }
 
     @Override
-    public MyArrayList<Floor> getSpaceList() { return FloorList; }
+    public MyArrayList<Floor> getFloorList() { return FloorList; }
 
     @Override
     public int size() { return FloorList.size(); }
@@ -138,9 +133,10 @@ public class Dwelling implements Building {
     public int getCountSpace(){
         if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
+
         int tmp = 0;
-        for(int i = 0;i < this.FloorList.size(); i++) {
-            tmp += this.FloorList.get(i).size();
+        for(var it: this.FloorList){
+            tmp += it.size();
         }
         return tmp;
     }
@@ -150,9 +146,9 @@ public class Dwelling implements Building {
         if(this.FloorList == null)
             throw new FloorIndexOutOfBoundsException();
         double tmp = this.FloorList.get(0).getBestSpace();
-        for(int i = 0; i < FloorList.size(); i++){
-            if(tmp < FloorList.get(i).getBestSpace())
-                tmp = FloorList.get(i).getBestSpace();
+        for(var it: this.FloorList){
+            if(tmp < it.getBestSpace())
+                tmp = it.getBestSpace();
         }
         return tmp;
     }
@@ -162,12 +158,10 @@ public class Dwelling implements Building {
 
     @Override
     public MyArrayList<Space> sortedSpace(){
-        int countSpaces = this.getCountSpace();
         MyArrayList<Space> tmp = new MyArrayList<>();
-        for(int i = 0; i < countSpaces; i++) {
-            var it = this.getSpace(i);
-            tmp.add(it);
-        }
+        for(var floor: this.FloorList)
+            for(var space: floor)
+                tmp.add(space);
         Comparator<Space> comparator = Comparator.comparing(Space::getSquare);
         tmp.sort(comparator);
         return tmp;
@@ -202,8 +196,7 @@ public class Dwelling implements Building {
             throws CloneNotSupportedException {
         Dwelling clone = (Dwelling) super.clone();
         clone.FloorList = new MyArrayList<>();
-        for(Floor floor:
-            FloorList){
+        for(Floor floor: FloorList){
             clone.FloorList.add((Floor)floor.clone());
         }
         return clone;

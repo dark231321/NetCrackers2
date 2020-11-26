@@ -1,19 +1,18 @@
 package com.buildings.property.Dwelling.Hotel;
 
-import com.buildings.Container.MyArrayList;
 import com.buildings.property.Dwelling.Dwelling;
 import com.buildings.property.Floor;
 
 public class Hotel extends Dwelling {
 
-    public Hotel(int countFloor, int[] countSpaces) {
+    public Hotel(int countFloor, int... countSpaces) {
         super(countFloor);
         for(int tmp : countSpaces){
             super.FloorList.add(new HotelFloor(tmp));
         }
     }
 
-    public Hotel(Floor[] floors){
+    public Hotel(Floor... floors){
         super(floors);
     }
 
@@ -26,13 +25,13 @@ public class Hotel extends Dwelling {
 
     @Override
     public int hashCode() {
-        return super.size() ^ super.getSpaceList().hashCode();
+        return super.size() ^ super.getFloorList().hashCode();
     }
 
     public int getCountStar(){
         int star = 1;
         int cur;
-        for (Floor floor: super.getSpaceList()){
+        for (Floor floor: super.getFloorList()){
             if(floor instanceof  HotelFloor)
                 if((cur = ((HotelFloor) floor).getCountStars()) > star)
                     star = cur;
@@ -44,7 +43,7 @@ public class Hotel extends Dwelling {
     public double getBestSpace() {
         double bestSpace = 0.0;
         double cur = 0.0;
-        for (Floor floor: super.getSpaceList()){
+        for (Floor floor: super.getFloorList()){
             if(floor instanceof  HotelFloor)
                 if((cur = floor.getBestSpace()) > bestSpace)
                     bestSpace = cur;
@@ -57,7 +56,7 @@ public class Hotel extends Dwelling {
         return "HotelFloor{" +
                 "count Stars = " + getCountStar() +
                 " count Floors = " + super.size() +
-                super.getSpaceList().toString() +
+                super.getFloorList().toString() +
                 '}';
     }
 }

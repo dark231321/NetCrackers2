@@ -1,4 +1,6 @@
-package com.buildings.property;
+package com.buildings.property.util;
+
+import com.buildings.property.Floor;
 
 import java.util.Comparator;
 

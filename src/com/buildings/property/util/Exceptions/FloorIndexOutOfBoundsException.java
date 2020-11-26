@@ -1,4 +1,4 @@
-package com.buildings.property.Exceptions;
+package com.buildings.property.util.Exceptions;
 
 public class FloorIndexOutOfBoundsException extends IndexOutOfBoundsException {
     public FloorIndexOutOfBoundsException() {

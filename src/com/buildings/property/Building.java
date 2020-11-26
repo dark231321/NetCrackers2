@@ -31,7 +31,7 @@ public interface Building extends Cloneable, Iterable<Floor>, Serializable {
 
     AbstractArray<Space> sortedSpace();
 
-    AbstractArray<Floor> getSpaceList();
+    AbstractArray<Floor> getFloorList();
 
     Object clone() throws CloneNotSupportedException;
 }

@@ -20,6 +20,8 @@ public class BinaryServer {
                     serverResponse.disconnect();
                 } catch (IOException io) {
                     System.out.println("Client socket connect exception: " + io);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         } catch (IOException io){

@@ -2,10 +2,8 @@ package com.buildings.Container;
 
 import com.buildings.Container.Alghorithms.ArraysMethods;
 import jdk.internal.vm.annotation.ForceInline;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.*;
 
 public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, Cloneable, Serializable {
@@ -80,7 +78,6 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, Cl
         return ArraysMethods.toString(this.data, 0, this.size() - 1);
     }
 
-    @NotNull
     public Iterator<T> iterator(){
         return new Itr();
     }
@@ -111,7 +108,6 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, Cl
             throw new OutOfMemoryError();
     }
 
-    @NotNull
     private Object[] copyOf(Object[] data) {
         Object[] tmp = new Object[capacity * 2];
         if (size() >= 0) System.arraycopy(data, 0, tmp, 0, size());
@@ -147,6 +143,14 @@ public class MyArrayList<T> extends AbstractArray<T> implements RandomAccess, Cl
         MyArrayList<?> clone = (MyArrayList<?>)super.clone();
         clone.data = Arrays.copyOf(this.data, this.capacity);
         return clone;
+    }
+
+    public Object[] toArray(){
+        int length; Object[] newArray = new Object[length = this.size];
+        for (int i = 0; i < length; i++){
+            newArray[i] = this.data[i];
+        }
+        return newArray;
     }
 
     @SuppressWarnings("unchecked")

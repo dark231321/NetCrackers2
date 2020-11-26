@@ -21,7 +21,7 @@ public class SerialServer {
                             SerialServerResponse serverResponse = new SerialServerResponse(socket);
                             serverResponse.count();
                             serverResponse.disconnect();
-                        } catch (IOException io) {
+                        } catch (IOException | ClassNotFoundException | InterruptedException io) {
                             io.printStackTrace();
                         }
                     }).start();

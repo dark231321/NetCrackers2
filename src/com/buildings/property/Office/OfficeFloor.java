@@ -1,13 +1,12 @@
 package com.buildings.property.Office;
 
-import com.buildings.Container.MyLinkedList;
 import com.buildings.Container.ListIterator;
-import com.buildings.property.Exceptions.FloorIndexOutOfBoundsException;
-import com.buildings.property.Exceptions.InvalidRoomsCountException;
-import com.buildings.property.Exceptions.InvalidSpaceAreaException;
+import com.buildings.Container.MyLinkedList;
+import com.buildings.property.util.Exceptions.FloorIndexOutOfBoundsException;
+import com.buildings.property.util.Exceptions.InvalidRoomsCountException;
+import com.buildings.property.util.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
@@ -28,7 +27,6 @@ public class OfficeFloor implements Floor {
         getCalculation();
     }
 
-    @NotNull
     @Override
     public Iterator<Space> iterator() {
         return SpaceList.iterator();
@@ -39,7 +37,7 @@ public class OfficeFloor implements Floor {
         return SpaceList.ListIterator(index);
     }
 
-    public OfficeFloor(Space[] spaces){
+    public OfficeFloor(Space... spaces){
         this.SpaceList = new MyLinkedList<>(spaces);
         getCalculation();
     }
@@ -68,8 +66,7 @@ public class OfficeFloor implements Floor {
             throws CloneNotSupportedException {
         OfficeFloor clone = (OfficeFloor) super.clone();
         clone.SpaceList = new MyLinkedList<>();
-        for(Space space:
-                SpaceList){
+        for(Space space: SpaceList){
             clone.SpaceList.add((Space) space.clone());
         }
         return clone;
@@ -90,7 +87,7 @@ public class OfficeFloor implements Floor {
     }
 
     @Override
-    public Space set(int index, @NotNull Space Space){
+    public Space set(int index, Space Space){
         if(index < 0 || index >= this.SpaceList.size())
             throw new FloorIndexOutOfBoundsException();
         Space tmp = SpaceList.ListIterator(index).next();
@@ -126,12 +123,10 @@ public class OfficeFloor implements Floor {
 
     @Override
     public double getBestSpace(){
-        Iterator<Space> it = SpaceList.iterator();
-        double tmp = 0;
-        while (it.hasNext()){
-            Space Space = it.next();
-            if(tmp < Space.getSquare())
-                tmp = Space.getSquare();
+        double tmp = 0; double space;
+        for(var it: this.SpaceList){
+            if(tmp < (space = it.getSquare()))
+                tmp = space;
         }
         return tmp;
     }
@@ -160,7 +155,7 @@ public class OfficeFloor implements Floor {
     }
 
     @Override
-    public int compareTo(@NotNull Floor spaces) {
+    public int compareTo(Floor spaces) {
         return Integer.compare(this.size(), spaces.size());
     }
 }

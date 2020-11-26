@@ -1,9 +1,8 @@
 package com.buildings.property.Dwelling;
 
-import com.buildings.property.Exceptions.InvalidRoomsCountException;
-import com.buildings.property.Exceptions.InvalidSpaceAreaException;
+import com.buildings.property.util.Exceptions.InvalidRoomsCountException;
+import com.buildings.property.util.Exceptions.InvalidSpaceAreaException;
 import com.buildings.property.Space;
-import org.jetbrains.annotations.NotNull;
 
 public class Flat implements Space {
     private double square;
@@ -77,7 +76,7 @@ public class Flat implements Space {
     }
 
     @Override
-    public int compareTo(@NotNull Space space) {
+    public int compareTo(Space space) {
         return Double.compare(space.getSquare(), this.square);
     }
 }

@@ -1,13 +1,11 @@
 package com.buildings.Container;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Objects;
 
 public abstract class AbstractArray<T> implements MyCollection<T> {
-
-    @NotNull
+    public abstract Object[] toArray();
     public abstract Iterator<T> iterator();
 
     public boolean isEmpty() {

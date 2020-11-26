@@ -1,13 +1,12 @@
-package com.buildings.property.Exceptions;
+package com.buildings.property.util.Exceptions;
 
 import com.buildings.property.Space;
-import org.jetbrains.annotations.NotNull;
 
 public class InexchangeableSpacesException extends IllegalArgumentException{
     public InexchangeableSpacesException(){
         super("Incomparable spaces");
     }
-    public InexchangeableSpacesException(@NotNull Space first, @NotNull Space second){
+    public InexchangeableSpacesException(Space first, Space second){
         super("Incomparable spaces: " +
                 first.getCountRooms() + " "+ second.getCountRooms() +
                 first.getSquare() + " " + second.getSquare());

@@ -1,11 +1,11 @@
 package com.buildings.net.server;
 
-import com.buildings.property.Algorithms.Buildings;
+import com.buildings.property.util.Buildings;
 import com.buildings.property.Building;
-import com.buildings.property.Exceptions.BuildingUnderArrestException;
-import com.buildings.property.Factorys.DwellingFactory;
-import com.buildings.property.Factorys.HotelFactory;
-import com.buildings.property.Factorys.OfficeFactory;
+import com.buildings.property.util.Exceptions.BuildingUnderArrestException;
+import com.buildings.property.util.Factorys.DwellingFactory;
+import com.buildings.property.util.Factorys.HotelFactory;
+import com.buildings.property.util.Factorys.OfficeFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,14 +24,15 @@ public class ServerResponse extends AbstractResponse {
     }
 
     @Override
-    public void count(){
+    public void count() throws InterruptedException {
+        Thread.sleep(2500);
         Building building = null;
         String name;
         while (this.reader.hasNextLine()){
             try {
                 if((name = this.reader.nextLine()).equals("exit"))
                     break;
-                System.out.println(name);
+                System.out.print(name);
                 int price = 0;
                 switch (name){
                     case "Dwelling":

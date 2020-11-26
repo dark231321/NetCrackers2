@@ -1,18 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6353e02e-178e-4792-98e6-67e8c85cdafd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/MyBuilding.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/BuildingForm.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/buildings/BuildingForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NameBuildings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/NameBuildings.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/net_crackers2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/net_crackers2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/META-INF/net_crackers2.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/AbstractArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/AbstractArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/Alghorithms/ArraysMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/Alghorithms/ArraysMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$Itr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$Itr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$ListItr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList$ListItr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyArrayList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net_crackers2/com/buildings/Container/MyCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/AbstractArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/AbstractArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/Alghorithms/ArraysMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/Alghorithms/ArraysMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/Container/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Container/MyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/buildings/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Algorithms/Buildings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Algorithms/Buildings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/client/BinaryClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/client/BinaryClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/client/SerialClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/client/SerialClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/server/AbstractResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/server/AbstractResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/server/SerialServerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/server/SerialServerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/server/ServerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/server/ServerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/server/parallel/BinaryServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/server/parallel/BinaryServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/server/parallel/SerialServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/server/parallel/SerialServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/server/sequental/BinaryServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/server/sequental/BinaryServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/net/server/sequental/SerialServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/net/server/sequental/SerialServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Algorithms/Buildings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Buildings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Algorithms/PlacementExchanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/PlacementExchanger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Decorators/SynchronizedFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Decorators/SynchronizedFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/Dwelling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/Dwelling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/DwellingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/DwellingFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/Flat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/Flat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/Hotel/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Dwelling/Hotel/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/BuildingUnderArrestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Exceptions/BuildingUnderArrestException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/FloorIndexOutOfBoundsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Exceptions/FloorIndexOutOfBoundsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InexchangeableFloorsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Exceptions/InexchangeableFloorsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InexchangeableSpacesException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Exceptions/InexchangeableSpacesException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InvalidRoomsCountException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Exceptions/InvalidRoomsCountException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/InvalidSpaceAreaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Exceptions/InvalidSpaceAreaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Exceptions/SpaceIndexOutOfBoundsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Exceptions/SpaceIndexOutOfBoundsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Factorys/BuildingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Factorys/BuildingFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Factorys/DwellingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Factorys/DwellingFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Factorys/HotelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Factorys/HotelFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Factorys/OfficeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/Factorys/OfficeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/FloorSpaceComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/FloorSpaceComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Office/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/Office.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/Office/OfficeFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/SpaceRoomsComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/util/SpaceRoomsComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/threads/Semaphore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/threads/Semaphore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/threads/SequentalCleaner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/threads/SequentalCleaner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/buildings/property/threads/SequentalRepairer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/buildings/property/threads/SequentalRepairer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="15" />
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -52,7 +123,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -61,16 +131,18 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="public" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nc-info-system" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="project.propGUI" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -81,32 +153,22 @@
       <recent name="com.buildings.property.Algorithms" />
       <recent name="com.buildings.property" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Danil1\IdeaProjects\net_crackers2\src\com\buildings\property" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\teter\IdeaProjects\NetCrackers2\resources" />
+      <recent name="C:\Users\teter\IdeaProjects\NetCrackers2\src\com\buildings" />
       <recent name="C:\Users\Danil1\IdeaProjects\net_crackers2" />
       <recent name="C:\Users\Danil1\IdeaProjects\net_crackers2\src" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.buildings.property" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\teter\IdeaProjects\NetCrackers2\src" />
+      <recent name="C:\Users\Danil1\IdeaProjects\net_crackers2\src\com\buildings\property" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.BinaryClient">
-    <configuration name="BinaryClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.buildings.net.client.BinaryClient" />
-      <module name="net_crackers2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.buildings.net.client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BinaryServer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="BinaryServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.buildings.net.server.parallel.BinaryServer" />
       <module name="net_crackers2" />
       <extension name="coverage">
@@ -119,12 +181,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BinaryServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.buildings.net.server.sequental.BinaryServer" />
+    <configuration name="BuildingForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.buildings.BuildingForm" />
       <module name="net_crackers2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.buildings.net.server.sequental.*" />
+          <option name="PATTERN" value="com.buildings.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -132,7 +194,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.buildings.Main" />
       <module name="net_crackers2" />
       <extension name="coverage">
@@ -145,7 +207,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SerialClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="SerialClient" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.buildings.net.client.SerialClient" />
       <module name="net_crackers2" />
       <extension name="coverage">
@@ -158,12 +220,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SerialServer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.buildings.net.server.sequental.SerialServer" />
+    <configuration name="SerialServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.buildings.net.server.parallel.SerialServer" />
       <module name="net_crackers2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.buildings.net.server.sequental.*" />
+          <option name="PATTERN" value="com.buildings.net.server.parallel.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,23 +234,23 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.SerialServer" />
       <item itemvalue="Application.SerialClient" />
-      <item itemvalue="Application.SerialServer (1)" />
-      <item itemvalue="Application.BinaryServer (1)" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.BuildingForm" />
       <item itemvalue="Application.BinaryServer" />
-      <item itemvalue="Application.BinaryClient" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BinaryClient" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.BuildingForm" />
         <item itemvalue="Application.BinaryServer" />
         <item itemvalue="Application.SerialClient" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.BinaryServer (1)" />
+        <item itemvalue="Application.SerialServer" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -246,6 +308,19 @@
       <workItem from="1605620102075" duration="67000" />
       <workItem from="1605777935999" duration="18015000" />
       <workItem from="1606061264492" duration="1421000" />
+      <workItem from="1606082636377" duration="1033000" />
+      <workItem from="1606118301181" duration="2055000" />
+      <workItem from="1606144938356" duration="2435000" />
+      <workItem from="1606148711873" duration="2056000" />
+      <workItem from="1606210684171" duration="1459000" />
+      <workItem from="1606215285308" duration="107000" />
+      <workItem from="1606215428167" duration="41000" />
+      <workItem from="1606215552088" duration="75000" />
+      <workItem from="1606216364136" duration="1678000" />
+      <workItem from="1606218283963" duration="23651000" />
+      <workItem from="1606302324807" duration="5394000" />
+      <workItem from="1606397655487" duration="8652000" />
+      <workItem from="1606424349928" duration="428000" />
     </task>
     <task id="LOCAL-00001" summary="msg">
       <created>1601829959398</created>
@@ -356,7 +431,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -386,13 +461,19 @@
             </State>
           </value>
         </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
       </map>
     </option>
-    <option name="OPEN_TABS">
-      <set>
-        <option value="1" />
-      </set>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="msg" />
@@ -418,14 +499,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601279309042" />
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605340009700">
+    <state x="451" y="90" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606398311860">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606223217155" />
+    <state x="451" y="90" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606398311860" />
+    <state x="774" y="218" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606217109813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605340009700" />
-    <state x="774" y="218" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605345315308">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="774" y="218" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1605345315308" />
+    <state x="774" y="218" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1606217109813" />
     <state x="670" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1605459083397">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -442,18 +524,24 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="817" y="321" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1602604694926" />
-    <state x="522" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603138872832">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="347" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606229459725">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="522" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1603138872832" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605458858641">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="347" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606229459725" />
+    <state x="624" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606225939166">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605458858641" />
+    <state x="624" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606225939166" />
     <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1603138897941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603138897941" />
+    <state x="551" y="191" key="#com.intellij.uiDesigner.palette.ComponentItemDialog" timestamp="1606223740298">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="551" y="191" key="#com.intellij.uiDesigner.palette.ComponentItemDialog/0.0.1536.824@0.0.1536.824" timestamp="1606223740298" />
     <state x="449" y="57" key="#com.intellij.unscramble.UnscrambleDialog" timestamp="1605345324507">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -470,54 +558,65 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="163" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605812905303" />
-    <state width="423" height="466" key="DebuggerActiveHint" timestamp="1605380541330">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="529" height="589" key="DebuggerActiveHint" timestamp="1606245171192">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="423" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1605380541330" />
-    <state x="930" y="311" key="FileChooserDialogImpl" timestamp="1605449894946">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="529" height="589" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1606245171192" />
+    <state x="1163" y="393" key="FileChooserDialogImpl" timestamp="1606412539379">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="930" y="311" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605449894946" />
-    <state width="1493" height="63" key="GridCell.Tab.0.bottom" timestamp="1605824398304">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="930" y="311" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606219985781" />
+    <state x="1163" y="393" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606412539379" />
+    <state width="1877" height="410" key="GridCell.Tab.0.bottom" timestamp="1606406127509">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="63" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605824398304" />
-    <state width="1493" height="63" key="GridCell.Tab.0.center" timestamp="1605824398304">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="152" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606225752332" />
+    <state width="1877" height="410" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606406127509" />
+    <state width="1877" height="410" key="GridCell.Tab.0.center" timestamp="1606406127508">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="63" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605824398304" />
-    <state width="1493" height="63" key="GridCell.Tab.0.left" timestamp="1605824398303">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="152" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606225752331" />
+    <state width="1877" height="410" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606406127508" />
+    <state width="1877" height="410" key="GridCell.Tab.0.left" timestamp="1606406127508">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="63" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605824398303" />
-    <state width="1493" height="63" key="GridCell.Tab.0.right" timestamp="1605824398304">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="152" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606225752331" />
+    <state width="1877" height="410" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606406127508" />
+    <state width="1877" height="410" key="GridCell.Tab.0.right" timestamp="1606406127508">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="63" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605824398304" />
-    <state width="1493" height="151" key="GridCell.Tab.1.bottom" timestamp="1605824395918">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="152" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606225752331" />
+    <state width="1877" height="410" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606406127508" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606399182317">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="151" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605824395918" />
-    <state width="1493" height="151" key="GridCell.Tab.1.center" timestamp="1605824395918">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606221041973" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606399182317" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1606399182317">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="151" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1605824395918" />
-    <state width="1493" height="151" key="GridCell.Tab.1.left" timestamp="1605824395918">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606221041973" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606399182317" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1606399182317">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="151" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1605824395918" />
-    <state width="1493" height="151" key="GridCell.Tab.1.right" timestamp="1605824395918">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606221041973" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606399182317" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1606399182317">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="151" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605824395918" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606221041973" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606399182317" />
     <state x="528" y="123" key="RollbackChangesDialog" timestamp="1605347780872">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="528" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605347780872" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1603022898071">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="311" y="0" key="SettingsEditor" timestamp="1606229651328">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603022898071" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606218386494" />
+    <state x="311" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606229651328" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1605620110289">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -530,26 +629,37 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605812910407" />
+    <state x="286" y="148" width="964" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606147204111">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="286" y="148" width="964" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1606147204111" />
     <state x="499" y="178" key="extract.method.dialog" timestamp="1603035294610">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="178" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1603035294610" />
-    <state x="209" y="33" key="new project wizard" timestamp="1605823643285">
+    <state x="1310" y="136" width="585" height="801" key="find.popup" timestamp="1606083521989">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1310" y="136" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606083521989" />
+    <state x="261" y="42" key="new project wizard" timestamp="1606412469646">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="209" y="33" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1606215468277" />
+    <state x="261" y="42" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1606412469646" />
+    <state x="475" y="41" key="refactoring.ChangeSignatureDialog" timestamp="1606224950333">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="33" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1605823643285" />
-    <state x="475" y="41" key="refactoring.ChangeSignatureDialog" timestamp="1605376167132">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1605376167132" />
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1605012293219">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1606224950333" />
+    <state x="531" y="236" width="840" height="855" key="run.anything.popup" timestamp="1606082672230">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1605012293219" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1603141134765">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606082672230" />
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1606405755059">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603141134765" />
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606405755059" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -569,12 +679,32 @@
           <line>10</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/buildings/Main.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.awt.IllegalComponentStateException" package="java.awt" />
+          <option name="timeStamp" value="31" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((OfficeBuilding)building1).FloorList" custom="com.buildings.property.Office.OfficeBuilding" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/net_crackers2$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1602835280754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.buildings.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/NetCrackers2$Main.ic" NAME="Main Coverage Results" MODIFIED="1606216568160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.buildings.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/NetCrackers2$SerialClient.ic" NAME="SerialClient Coverage Results" MODIFIED="1606220990455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.buildings.net.client.*</FILTER>
     </SUITE>
   </component>
 </project>

@@ -1,25 +1,13 @@
-package com.buildings.property.Algorithms;
+package com.buildings.property.util;
 
 import com.buildings.property.Building;
 import com.buildings.property.Decorators.SynchronizedFloor;
-import com.buildings.property.Factorys.BuildingFactory;
-import com.buildings.property.Factorys.DwellingFactory;
+import com.buildings.property.util.Factorys.BuildingFactory;
+import com.buildings.property.util.Factorys.DwellingFactory;
 import com.buildings.property.Floor;
 import com.buildings.property.Space;
-import org.jetbrains.annotations.Nullable;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.StreamTokenizer;
-import java.io.Writer;
+
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -28,11 +16,11 @@ public class Buildings {
 
     private static BuildingFactory abstractFactory = new DwellingFactory();
 
-    public static Building ofBuilding(int countFloors, int[] sizeFloors){ return abstractFactory.createBuilding(countFloors, sizeFloors); }
+    public static Building ofBuilding(int countFloors, int... sizeFloors){ return abstractFactory.createBuilding(countFloors, sizeFloors); }
 
-    public static Building ofBuilding(Floor[] floors){ return abstractFactory.createBuilding(floors); }
+    public static Building ofBuilding(Floor... floors){ return abstractFactory.createBuilding(floors); }
 
-    public static Floor ofFloor(Space[] spaces){
+    public static Floor ofFloor(Space... spaces){
         return abstractFactory.createFloor(spaces);
     }
 
@@ -48,55 +36,49 @@ public class Buildings {
         return abstractFactory.createSpace(area);
     }
 
-    @SuppressWarnings("unchecked")
-    public static Building ofBuilding(int countFloors, int[] sizeFloors, Class buildingClass) {
+    public static Building ofBuilding(Class<? extends Building> buildingClass, int countFloors, int... sizeFloors) {
         try {
-            return (Building) buildingClass.getConstructor(int.class, int[].class).newInstance(countFloors, sizeFloors);
+            return buildingClass.getConstructor(int.class, int[].class).newInstance(countFloors, sizeFloors);
         }catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public static Building ofBuilding(Floor[] floors, Class buildingClass){
+    public static Building ofBuilding(Class<? extends Building> buildingClass, Floor... floors){
         try {
-            return (Building) buildingClass.getConstructor(Floor[].class).newInstance((Object) floors);
+            return buildingClass.getConstructor(Floor[].class).newInstance((Object) floors);
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public static Floor ofFloor(Space[] spaces, Class floorClass){
+    public static Floor ofFloor(Class<? extends Floor> floorClass, Space... spaces){
         try {
-            return (Floor) floorClass.getConstructor(Space[].class).newInstance((Object) spaces);
+            return floorClass.getConstructor(Space[].class).newInstance((Object) spaces);
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public static Floor ofFloor(int spaceCount, Class floorClass) {
+    public static Floor ofFloor(int spaceCount, Class<? extends Floor> floorClass) {
         try {
-            return (Floor) floorClass.getConstructor(int.class).newInstance(spaceCount);
+            return floorClass.getConstructor(int.class).newInstance(spaceCount);
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public static Space ofSpace(int roomsCount, double area, Class spaceClass) {
+    public static Space ofSpace(int roomsCount, double area, Class<? extends Space> spaceClass) {
         try {
-            return (Space) spaceClass.getConstructor(int.class, double.class).newInstance(roomsCount, area);
+            return spaceClass.getConstructor(int.class, double.class).newInstance(roomsCount, area);
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public static Space ofSpace(double area, Class spaceClass) {
+    public static Space ofSpace(double area, Class<? extends Space> spaceClass) {
         try {
-            return (Space) spaceClass.getConstructor(double.class).newInstance(area);
+            return spaceClass.getConstructor(double.class).newInstance(area);
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalArgumentException();
         }
@@ -107,21 +89,20 @@ public class Buildings {
     }
 
     public static void sortFloor(Floor floor,
-                                 @Nullable Comparator<? super Space> spaceComparator){
+                                 Comparator<? super Space> spaceComparator){
         floor.getSpaceList().sort(spaceComparator);
     }
 
     public static void sortFloors(Building building,
-                                 @Nullable Comparator<? super Floor> floorComparator) {
-        building.getSpaceList().sort(floorComparator);
+                                 Comparator<? super Floor> floorComparator) {
+        building.getFloorList().sort(floorComparator);
     }
 
     public static void sortBuilding(Building building,
-                                    @Nullable Comparator<? super Floor> floorComparator,
-                                    @Nullable Comparator<? super Space> spaceComparator){
+                                    Comparator<? super Floor> floorComparator,
+                                    Comparator<? super Space> spaceComparator){
         sortFloors(building, floorComparator);
-        for (Floor floor:
-             building) {
+        for (Floor floor: building) {
             sortFloor(floor, spaceComparator);
         }
     }
@@ -153,9 +134,8 @@ public class Buildings {
     }
 
 
-    public static Building inputBuilding (InputStream in, Class<Building> buildingClass,
-                                          Class<Floor> floorClass, Class<Space> spaceClass)
-            throws IOException{
+    public static Building inputBuilding (InputStream in, Class<? extends Building> buildingClass,
+                                          Class<? extends Floor> floorClass, Class<? extends Space> spaceClass) {
         Building building = null;
         try {
             DataInputStream dataInputStream = new DataInputStream(in);
@@ -203,23 +183,23 @@ public class Buildings {
                                       Writer out) {
         PrintWriter printWriter = new PrintWriter(new
                 BufferedWriter(out));
-        StringBuilder stringBuffer = new StringBuilder();
-        stringBuffer.append(building.size()).append(" ");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(building.size()).append(" ");
         for(int i = 0; i < building.size(); i++) {
             Floor floor = building.get(i);
-            stringBuffer.append(floor.size()).append(" ");
+            stringBuilder.append(floor.size()).append(" ");
             for(int j = 0; j < floor.size(); j++){
                 Space space = floor.get(j);
-                stringBuffer.append(space.getCountRooms()).append(" ");
-                stringBuffer.append(space.getSquare()).append(" ");
+                stringBuilder.append(space.getCountRooms()).append(" ");
+                stringBuilder.append(space.getSquare()).append(" ");
             }
         }
-        printWriter.print(stringBuffer.toString() + "\n");
+        printWriter.print(stringBuilder.toString() + "\n");
         printWriter.flush();
     }
 
-    public static Building readBuilding (Reader in, Class<Building> buildingClass,
-                                         Class<Floor> floorClass, Class<Space> spaceClass) {
+    public static Building readBuilding (Reader in, Class<? extends Building> buildingClass,
+                                         Class<? extends Floor> floorClass, Class<? extends Space> spaceClass) {
         Building building = null;
         try {
             StreamTokenizer streamTokenizer = new StreamTokenizer(new BufferedReader(in));
@@ -324,8 +304,8 @@ public class Buildings {
         return ofBuilding(bufFloor);
     }
 
-    public static Building readBuilding(Scanner scnr,Class<Building> buildingClass,
-                                        Class<Floor> floorClass, Class<Space> spaceClass) {
+    public static Building readBuilding(Scanner scnr,Class<? extends Building> buildingClass,
+                                        Class<? extends Floor> floorClass, Class<? extends Space> spaceClass) {
         Building building = null;
         try {
             int floorAmount = scnr.nextInt();
@@ -367,7 +347,10 @@ public class Buildings {
                 out.append(bufString);
             }
         }
+        out.flush();
     }
+
+
 
     public SynchronizedFloor synchronizedFloor(Floor floor){
         return new SynchronizedFloor(floor);

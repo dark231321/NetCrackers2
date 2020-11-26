@@ -1,4 +1,4 @@
-package com.buildings.property.Factorys;
+package com.buildings.property.util.Factorys;
 
 import com.buildings.property.Building;
 import com.buildings.property.Floor;
@@ -24,11 +24,11 @@ public class OfficeFactory implements BuildingFactory {
     }
 
     @Override
-    public Floor createFloor(Space[] spaces) { return new OfficeFloor(spaces); }
+    public Floor createFloor(Space... spaces) { return new OfficeFloor(spaces); }
 
     @Override
-    public Building createBuilding(int floorsCount, int[] spacesCounts) { return new OfficeBuilding(floorsCount, spacesCounts); }
+    public Building createBuilding(int floorsCount, int... spacesCounts) { return new OfficeBuilding(floorsCount, spacesCounts); }
 
     @Override
-    public Building createBuilding(Floor[] floors) { return new OfficeBuilding(floors); }
+    public Building createBuilding(Floor... floors) { return new OfficeBuilding(floors); }
 }

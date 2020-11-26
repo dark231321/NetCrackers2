@@ -1,12 +1,10 @@
 package com.buildings.Container;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Iterator;
 
 public interface MyCollection<T> extends Iterable<T> {
 
-    @NotNull Iterator<T> iterator();
+    Iterator<T> iterator();
 
     boolean add(T value);
 
